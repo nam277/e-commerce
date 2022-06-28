@@ -1,0 +1,131 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    background-color: $main-background;
+    z-index: 99;
+    transition: height 0.3s linear;
+
+    @include tablet {
+        height: $header-tablet-height;
+        box-shadow: $box-shadow;
+    }
+
+    @include mobile {
+        height: $header-mobile-height;
+        box-shadow: $box-shadow;
+    }
+
+    &.shrink {
+        height: $header-shrink-height;
+        box-shadow: $box-shadow;
+        z-index: 100;
+
+        @include mobile {
+            height: $header-mobile-height;
+        }
+    }
+
+    .container {
+        height: 100%;
+        @include flex(center, space-between);
+    }
+
+    &_toggle {
+        display: none;
+        flex: 1;
+        font-size: 3rem;
+
+        @include tablet {
+            display: block;
+        }
+    }
+
+    &_left {
+        flex: 1;
+        font-size: 1.5rem;
+        height: 100%;
+        @include flex(center, flex-start);
+
+        &_item {
+            padding: 10px 10px 10px 0;
+            &:hover {
+                color: $main-color;
+            }
+            &.active {
+                font-weight: bolder;
+                color: $main-color;
+            }
+        }
+
+        &_item ~ &_item {
+            margin-left: 10px;
+        }
+
+        &_back {
+            display: none;
+        }
+
+        @include tablet {
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: $main-background;
+            transform: translateX(-100%);
+            transition: transform 0.3s linear;
+
+            &_item {
+                font-size: 2rem;
+                padding: 20px;
+            }
+
+            &_item ~ &_item {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            &.active {
+                transform: translateX(0);
+            }
+
+            &_back {
+                display: block;
+                position: absolute;
+                padding: 10px;
+                left: 20px;
+                font-size: 3rem;
+            }
+        }
+    }
+
+    &_logo {
+        flex: 1;
+        height: 50%;
+        @include flex(center, center);
+
+        &_cover {
+            height: 100%;
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    &_right {
+        flex: 1;
+        font-size: 2.5rem;
+        height: 100%;
+        @include flex(center, flex-end);
+
+        &_item {
+            padding-left: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
+}
