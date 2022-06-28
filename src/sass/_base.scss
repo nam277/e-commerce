@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 13px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+@each $key, $value in $colors {
+    .color-#{$key} {
+        color: $value;
+    }
+
+    .bg-color-#{$key} {
+        background-color: $value;
+    }
+}
+
+@each $num in $numbers {
+    .grid-col-#{$num} {
+        grid-template-columns: repeat($num, 1fr);
+    }
+}
+
+@each $num in $numbers {
+    .grid-col-md-#{$num} {
+        @include tablet {
+            grid-template-columns: repeat($num, 1fr);
+        }
+    }
+}
+
+@each $num in $numbers {
+    .grid-col-sm-#{$num} {
+        @include mobile {
+            grid-template-columns: repeat($num, 1fr);
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1530px;
+    padding: 0 50px;
+    margin: auto;
+
+    @include tablet {
+        padding: 0 20px;
+    }
+
+    @include mobile {
+        padding: 0 10px;
+    }
+}
+
+.main {
+    margin-top: $header-height;
+    margin-bottom: 2rem;
+    min-height: 100vh;
+
+    @include tablet {
+        margin-top: calc($header-tablet-height + 20px);
+    }
+
+    @include mobile {
+        margin-top: calc($header-mobile-height + 10px);
+    }
+}
+
+.gird {
+    display: grid;
+}
