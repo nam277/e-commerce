@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './HeroSlider.scss';
+import Button from '../Button';
 
 const HeroSlider = ({ data, control = false, auto = true, timeOut = 3000 }) => {
     const [activeSlider, setActiveSlider] = useState(1);
@@ -47,7 +48,14 @@ const HeroSlider = ({ data, control = false, auto = true, timeOut = 3000 }) => {
                             <p>{item.description}</p>
                         </div>
                         <Link to={item.path} className="slider_items_left_link">
-                            <button>Xem chi tiết</button>
+                            <Button
+                                bgColor={item.color}
+                                icon="bx bx-cart"
+                                animation={true}
+                                // size="small"
+                            >
+                                Xem chi tiết
+                            </Button>
                         </Link>
                     </div>
                     <div className="slider_items_right">
