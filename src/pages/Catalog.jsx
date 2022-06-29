@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
+import Title from '../components/Title';
 
 const Catalog = () => {
-  return (
-    <div>Catalog</div>
-  )
-}
+    return <Title title="Product">Catalog</Title>;
+};
 
-export default Catalog
+export default Catalog;

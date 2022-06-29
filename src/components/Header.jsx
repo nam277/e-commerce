@@ -54,7 +54,7 @@ const Header = () => {
                 </div>
                 <div className="header_left" ref={headerLeftRef}>
                     <div className="header_left_back" onClick={handleMenu}>
-                        <i class="bx bx-chevron-left"></i>
+                        <i className="bx bx-chevron-left"></i>
                     </div>
                     {mainNav.map((page, index) => (
                         <Link

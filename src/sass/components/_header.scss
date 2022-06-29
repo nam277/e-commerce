@@ -41,6 +41,10 @@
         @include tablet {
             display: block;
         }
+
+        @include mobile {
+            font-size: 2.2rem;
+        }
     }
 
     &_left {
@@ -122,10 +126,19 @@
         height: 100%;
         @include flex(center, flex-end);
 
+        @include mobile {
+            font-size: 1.5rem;
+        }
+
         &_item {
             padding-left: 20px;
             margin-left: 10px;
             cursor: pointer;
+
+            @include mobile {
+                padding-left: 10px;
+                margin-left: 5px;
+            }
         }
     }
 }

@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
+import Title from '../components/Title';
 
 const Product = () => {
-  return (
-    <div>Product</div>
-  )
-}
+    return <Title title="Product">Product</Title>;
+};
 
-export default Product
+export default Product;
