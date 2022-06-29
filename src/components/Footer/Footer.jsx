@@ -1,9 +1,10 @@
 import React from 'react';
-import Grid from './Grid';
 
 import { Link } from 'react-router-dom';
 
-import logo from '../assets/images/Logo-2.png';
+import Grid from '~/components/Grid';
+import './Footer.scss';
+import logo from '~/assets/images/Logo-2.png';
 
 const footerAboutLinks = [
     {

@@ -81,7 +81,7 @@ a {
     min-height: 100vh;
 
     @include tablet {
-        margin-top: calc($header-tablet-height + 20px);
+        margin-top: $header-tablet-height;
     }
 
     @include mobile {

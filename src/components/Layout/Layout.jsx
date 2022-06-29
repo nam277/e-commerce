@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { publicRoutes } from '../routes/routes';
+import { publicRoutes } from '~/routes';
 
-import Header from './Header';
-import Footer from './Footer';
+import Header from '~/components/Header/Header';
+import Footer from '~/components/Footer';
 
 const Layout = () => {
     return (
