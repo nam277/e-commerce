@@ -1,0 +1,64 @@
+@import '../../sass/index.scss';
+
+.product-card {
+    &_image {
+        padding-top: 140%;
+        overflow: hidden;
+        position: relative;
+        top: 0;
+
+        &_model {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            border-radius: 10px;
+            transform: translateX(-50%) scale(1);
+            transition: transform 0.7s ease;
+        }
+
+        &_clothes {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            transform: translateX(-50%) scale(0);
+            transition: transform 0.7s ease;
+        }
+
+        &:hover &_model {
+            transform: translateX(-50%) scale(0);
+        }
+
+        &:hover &_clothes {
+            transform: translateX(-50%) scale(1);
+        }
+    }
+
+    &_name {
+        color: $text-second-color;
+        margin-bottom: 10px;
+        margin-top: 30px;
+        font-size: 1.2rem;
+        @include flex(center, center);
+    }
+
+    &_price {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        @include flex(center, center);
+
+        &_new {
+            margin-right: 50px;
+        }
+
+        &_old {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+    }
+
+    &_icon {
+        @include flex(center, center);
+    }
+}

@@ -9,6 +9,7 @@
     font-size: 1.5rem;
     position: relative;
     @include flex(center, center);
+    overflow: hidden;
 
     &_text {
         font-weight: bolder;

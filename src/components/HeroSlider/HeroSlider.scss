@@ -81,8 +81,7 @@
                 }
             }
             &_link {
-                display: inline-flex;
-                overflow: hidden;
+                width: fit-content;
                 @include mobile {
                     height: 2.6rem;
                 }

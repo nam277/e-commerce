@@ -11,7 +11,7 @@ const Button = ({
     auto = false,
     children,
 }) => {
-    const btnColor = bgColor ? `bg-color-${bgColor}` : 'main-color';
+    const btnColor = bgColor ? `bg-color-${bgColor}` : 'bg-color-main';
 
     const animated = animation ? `btn_animation` : '';
 

@@ -1,7 +1,13 @@
+@import '../../sass/index.scss';
+
 .section {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     &_title {
         font-size: 2rem;
+        color: $main-color;
+        @include flex(center, center);
+        margin-bottom: 50px;
+
         text-transform: capitalize;
     }
 }
