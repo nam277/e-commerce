@@ -53,6 +53,7 @@ const HeroSlider = ({ data, control = false, auto = true, timeOut = 3000 }) => {
                                 icon="bx bx-cart"
                                 animation={true}
                                 // size="small"
+                                auto={true}
                             >
                                 Xem chi tiết
                             </Button>

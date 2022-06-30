@@ -83,6 +83,9 @@
             &_link {
                 display: inline-flex;
                 overflow: hidden;
+                @include mobile {
+                    height: 2.6rem;
+                }
             }
 
             &_title > p,

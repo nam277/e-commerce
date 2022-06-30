@@ -43,4 +43,28 @@
     &_small &_icon {
         font-size: 2rem;
     }
+
+    &_auto {
+        &_icon {
+            animation: slide 10s infinite;
+            animation-delay: 2.5s;
+        }
+
+        &_text {
+            animation: slide 10s infinite;
+            animation-delay: -2.5s;
+        }
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
