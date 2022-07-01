@@ -29,6 +29,10 @@ a {
     }
 }
 
+img {
+    max-width: 100%;
+}
+
 @each $key, $value in $colors {
     .color-#{$key} {
         color: $value;

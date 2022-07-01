@@ -52,7 +52,7 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="container">
-                <Grid col={4} md={2} sm={1} gap={20}>
+                <Grid col={4} md={2} sm={1} rowGap={20}>
                     <div className="footer_title">
                         <h3 className="footer_title_heading">
                             Tổng đài hỗ trợ

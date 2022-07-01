@@ -2,12 +2,31 @@
 
 .section {
     margin-bottom: 70px;
+    ~ .section {
+        margin-top: 100px;
+    }
+
+    @include mobile {
+        margin-bottom: 50px;
+        ~ .section {
+            margin-top: 50px;
+        }
+    }
     &_title {
         font-size: 2rem;
-        color: $main-color;
-        @include flex(center, center);
+        color: $text-main-color;
+        text-align: center;
         margin-bottom: 50px;
-
+        font-weight: normal;
         text-transform: capitalize;
+
+        @include mobile {
+            font-size: 1.7rem;
+        }
+        span {
+            text-transform: uppercase;
+            color: $main-color;
+            font-weight: bold;
+        }
     }
 }

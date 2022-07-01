@@ -28,9 +28,9 @@ const ProductCard = ({ title, price, oldPrice, image01, image02, path }) => {
                 <h3 className="product-card_price_new">
                     {NumberCommas(price)}
                 </h3>
-                <del className="product-card_price_old">
+                <h3 className="product-card_price_old">
                     {NumberCommas(oldPrice)}
-                </del>
+                </h3>
             </div>
             <div className="product-card_icon">
                 <Button icon="bx bx-cart" auto={true} size="small">
@@ -43,6 +43,9 @@ const ProductCard = ({ title, price, oldPrice, image01, image02, path }) => {
 
 ProductCard.propTypes = {
     title: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    oldPrice: PropTypes.string,
+    path: PropTypes.string,
 };
 
 export default ProductCard;

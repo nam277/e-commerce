@@ -11,6 +11,7 @@ import ProductCard from '~/components/ProductCard';
 import heroSliderData from '~/assets/fakeData/heroSlider';
 import policies from '~/assets/fakeData/policies';
 import { getAllProducts, getProducts } from '~/assets/fakeData/products';
+import banner from '~/assets/images/banner.png';
 
 const Home = () => {
     return (
@@ -25,7 +26,7 @@ const Home = () => {
             {/* Policy Section */}
             <Section>
                 <SectionContent>
-                    <Grid col={4} md={2} sm={1} gap={20}>
+                    <Grid col={4} md={2} sm={1} rowGap={20}>
                         {policies.map((policy, index) => (
                             <Link key={index} to="./policy">
                                 <Policy
@@ -41,10 +42,65 @@ const Home = () => {
 
             {/* Best Seller Section */}
             <Section>
-                <SectionTitle>Top sản phẩm bán chạy trong tuần</SectionTitle>
+                <SectionTitle>
+                    Top sản phẩm bán chạy trong tuần của <span>Yolo</span>
+                </SectionTitle>
                 <SectionContent>
-                    <Grid col={4} md={2} sm={1} gap={10}>
+                    <Grid col={4} md={2} sm={1} rowGap={30} colGap={10}>
                         {getProducts(4).map((product, index) => (
+                            <ProductCard
+                                key={index}
+                                title={product.title}
+                                price={product.price}
+                                oldPrice={product.oldPrice}
+                                image01={product.image01}
+                                image02={product.image02}
+                                path={product.slug}
+                            />
+                        ))}
+                    </Grid>
+                </SectionContent>
+            </Section>
+
+            {/* New Products Section */}
+            <Section>
+                <SectionTitle>
+                    Sản phẩm mới của <span>Yolo</span>
+                </SectionTitle>
+                <SectionContent>
+                    <Grid col={4} md={3} sm={2} rowGap={30} colGap={10}>
+                        {getProducts(8).map((product, index) => (
+                            <ProductCard
+                                key={index}
+                                title={product.title}
+                                price={product.price}
+                                oldPrice={product.oldPrice}
+                                image01={product.image01}
+                                image02={product.image02}
+                                path={product.slug}
+                            />
+                        ))}
+                    </Grid>
+                </SectionContent>
+            </Section>
+
+            {/* Banner */}
+            <Section>
+                <SectionContent>
+                    <Link to="./catalog">
+                        <img src={banner} alt="Flat sale" />
+                    </Link>
+                </SectionContent>
+            </Section>
+
+            {/* Popular Products Section */}
+            <Section>
+                <SectionTitle>
+                    Các sản phẩm phổ biến của <span>Yolo</span>
+                </SectionTitle>
+                <SectionContent>
+                    <Grid col={5} md={4} sm={2} rowGap={30} colGap={10}>
+                        {getProducts(12).map((product, index) => (
                             <ProductCard
                                 key={index}
                                 title={product.title}
