@@ -1,0 +1,31 @@
+@import '../../sass/index.scss';
+
+.catalog {
+    @include flex(flex-start, flex-start);
+    padding-top: 50px;
+    &_filter {
+        flex: 1;
+        &_item {
+            &_title {
+                text-transform: capitalize;
+                font-size: 1.35rem;
+                margin-bottom: 10px;
+            }
+            &_checkbox {
+                padding-left: 10px;
+            }
+        }
+
+        &_item ~ &_item {
+            margin-top: 40px;
+        }
+
+        &_delete {
+            margin-top: 20px;
+        }
+    }
+
+    &_items {
+        flex: 4;
+    }
+}

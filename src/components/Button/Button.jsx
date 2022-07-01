@@ -6,7 +6,7 @@ import './Button.scss';
 const Button = ({
     bgColor,
     icon,
-    animation = true,
+    animation = false,
     size,
     auto = false,
     children,

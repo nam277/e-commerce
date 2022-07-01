@@ -33,7 +33,7 @@ const ProductCard = ({ title, price, oldPrice, image01, image02, path }) => {
                 </h3>
             </div>
             <div className="product-card_icon">
-                <Button icon="bx bx-cart" auto={true} size="small">
+                <Button icon="bx bx-cart" auto={true} size="medium">
                     Xem chi tiết
                 </Button>
             </div>
