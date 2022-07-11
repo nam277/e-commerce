@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import Grid from '~/components/Grid';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 
 import './Catalog.scss';
 import Title from '~/components/Title';
-import ProductCard from '~/components/ProductCard';
 
-import { getAllProducts, getProducts } from '~/assets/fakeData/products';
+import { getAllProducts } from '~/assets/fakeData/products';
 import { category, colors, sizes } from '~/assets/fakeData/category';
 import Checkbox from '~/components/Checkbox';
 import Button from '~/components/Button';
+import LoadingMoreList from '~/components/LoadingMoreList';
 
 const Catalog = () => {
     const initialFilter = {
@@ -70,17 +69,11 @@ const Catalog = () => {
         }
 
         if (filter.colors.length > 0) {
-            temporary = temporary.filter((product) => {
-                const check = product.colors.find((color) => filter.colors.includes(color));
-                return !!check;
-            });
+            temporary = temporary.filter((product) => product.colors.some((color) => filter.colors.includes(color)));
         }
 
         if (filter.sizes.length > 0) {
-            temporary = temporary.filter((product) => {
-                const check = product.size.find((size) => filter.sizes.includes(size));
-                return !!check;
-            });
+            temporary = temporary.filter((product) => product.size.some((size) => filter.sizes.includes(size)));
         }
 
         setProduct(temporary);
@@ -91,10 +84,18 @@ const Catalog = () => {
     }, [updateProducts]);
 
     const handleClearFilter = () => setFilter(initialFilter);
+
+    const filterRef = useRef();
+
+    const showHiddenFilter = () => filterRef.current.classList.toggle('active');
+
     return (
         <Title title="Product">
             <div className="catalog">
-                <div className="catalog_filter">
+                <div className="catalog_filter" ref={filterRef}>
+                    <div className="catalog_filter_close" onClick={() => showHiddenFilter()}>
+                        <i className="bx bx-left-arrow-alt"></i>
+                    </div>
                     <div className="catalog_filter_item">
                         <h3 className="catalog_filter_item_title">danh mục sản phẩm</h3>
                         <div className="catalog_filter_item_checkbox">
@@ -140,20 +141,13 @@ const Catalog = () => {
                         </Button>
                     </div>
                 </div>
+                <div className="catalog_toggle">
+                    <Button size="small" onClick={() => showHiddenFilter()}>
+                        Bộ lọc
+                    </Button>
+                </div>
                 <div className="catalog_items">
-                    <Grid col={4} rowGap={20}>
-                        {products.map((item, index) => (
-                            <ProductCard
-                                key={index}
-                                title={item.title}
-                                price={item.price}
-                                oldPrice={item.oldPrice}
-                                image01={item.image01}
-                                image02={item.image02}
-                                path={item.slug}
-                            />
-                        ))}
-                    </Grid>
+                    <LoadingMoreList products={products} />
                 </div>
             </div>
         </Title>

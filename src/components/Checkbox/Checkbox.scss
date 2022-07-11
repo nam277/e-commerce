@@ -9,6 +9,9 @@
 
     ~ .checkbox {
         margin-top: 10px;
+        @include mobile {
+            margin-top: 5px;
+        }
     }
 
     &_input {
