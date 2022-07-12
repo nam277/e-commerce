@@ -4,7 +4,6 @@
     overflow: hidden;
     height: 95vh;
     max-height: 960px;
-    margin-top: -80px;
     position: relative;
 
     @include tablet {
@@ -12,7 +11,6 @@
         height: 100vh;
     }
     @include mobile {
-        margin-top: -55px;
     }
     &_items {
         height: 100%;
@@ -159,6 +157,10 @@
 
         @include tablet {
             bottom: 30px;
+        }
+
+        @include mobile {
+            bottom: 50px;
         }
 
         &_btn {

@@ -1,0 +1,57 @@
+@import '../../sass/index.scss';
+
+.goTop {
+    @include tablet {
+        position: fixed;
+        bottom: 5vh;
+        right: 3vh;
+        z-index: 101;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        @include flex(center, center);
+        background-color: rgba($color: #ccc, $alpha: 0.5);
+        border: 1px solid $text-second-color;
+        transform: scale(0);
+        transition: transform 0.2s ease-in-out;
+
+        &.active {
+            transform: scale(1);
+        }
+
+        i {
+            font-size: 3rem;
+            color: $main-color;
+            font-weight: 200;
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1530px;
+    padding: 0 50px;
+    margin: auto;
+
+    @include tablet {
+        padding: 0 20px;
+    }
+
+    @include mobile {
+        padding: 0 10px;
+    }
+}
+
+.main {
+    margin-top: $header-height;
+    margin-bottom: 2rem;
+    min-height: 100vh;
+
+    @include tablet {
+        margin-top: $header-tablet-height;
+    }
+
+    @include mobile {
+        margin-top: $header-mobile-height;
+    }
+}

@@ -49,7 +49,7 @@ const Header = () => {
 
     return (
         <div className="header" ref={headerRef}>
-            <div className="container">
+            <div className="content">
                 <div className="header_toggle" onClick={handleMenu}>
                     <i className="bx bx-menu-alt-left"></i>
                 </div>
@@ -62,9 +62,7 @@ const Header = () => {
                             to={page.path}
                             key={index}
                             onClick={handleMenu}
-                            className={`header_left_item ${
-                                page.path === pathname ? 'active' : ''
-                            }`}
+                            className={`header_left_item ${page.path === pathname ? 'active' : ''}`}
                         >
                             <span>{page.title}</span>
                         </Link>

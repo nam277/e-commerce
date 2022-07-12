@@ -16,12 +16,7 @@ import banner from '~/assets/images/banner.png';
 const Home = () => {
     return (
         <Title title="Home">
-            <HeroSlider
-                data={heroSliderData}
-                control={true}
-                auto={false}
-                timeOut={5000}
-            />
+            <HeroSlider data={heroSliderData} control={true} auto={false} timeOut={5000} />
 
             {/* Policy Section */}
             <Section>
@@ -29,11 +24,7 @@ const Home = () => {
                     <Grid col={4} md={2} sm={1} rowGap={20}>
                         {policies.map((policy, index) => (
                             <Link key={index} to="./policy">
-                                <Policy
-                                    name={policy.name}
-                                    desc={policy.description}
-                                    icon={policy.icon}
-                                />
+                                <Policy name={policy.name} desc={policy.description} icon={policy.icon} />
                             </Link>
                         ))}
                     </Grid>
@@ -56,6 +47,7 @@ const Home = () => {
                                 image01={product.image01}
                                 image02={product.image02}
                                 path={product.slug}
+                                auto={true}
                             />
                         ))}
                     </Grid>
@@ -78,6 +70,7 @@ const Home = () => {
                                 image01={product.image01}
                                 image02={product.image02}
                                 path={product.slug}
+                                size="small"
                             />
                         ))}
                     </Grid>
@@ -109,6 +102,7 @@ const Home = () => {
                                 image01={product.image01}
                                 image02={product.image02}
                                 path={product.slug}
+                                size="small"
                             />
                         ))}
                     </Grid>

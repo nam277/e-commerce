@@ -11,8 +11,7 @@
 
     @include mobile {
         flex-direction: column;
-        padding-top: 0;
-        margin-top: -10px;
+        padding-top: 15px;
     }
     &_filter {
         flex: 1;

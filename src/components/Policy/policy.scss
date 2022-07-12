@@ -3,6 +3,7 @@
 .policy {
     @include flex(center, space-between);
     padding: 10px 15px;
+    height: 100%;
     box-shadow: $box-shadow;
     background-color: $second-background;
     border-radius: 4px;
