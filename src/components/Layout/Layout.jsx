@@ -6,6 +6,7 @@ import { publicRoutes } from '~/routes';
 import './Layout.scss';
 import Header from '~/components/Header/Header';
 import Footer from '~/components/Footer';
+import ProductDetailModal from '../ProductDetailModal';
 
 const Layout = () => {
     const [showTopBtn, setShowTopBtn] = useState(false);
@@ -44,6 +45,7 @@ const Layout = () => {
                 </div>
             </div>
             <Footer />
+            <ProductDetailModal />
         </BrowserRouter>
     );
 };

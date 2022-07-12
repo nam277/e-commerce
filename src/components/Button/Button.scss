@@ -67,6 +67,10 @@
             animation-delay: -2.5s;
         }
     }
+
+    &_square {
+        border-radius: 0;
+    }
 }
 
 @keyframes slide {

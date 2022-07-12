@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Button.scss';
 
-const Button = ({ bgColor, icon, animation = false, size, auto = false, children, onClick }) => {
+const Button = ({ bgColor, icon, animation = false, size, auto = false, children, onClick, isSquared = false }) => {
     const btnColor = bgColor ? `bg-color-${bgColor}` : 'bg-color-main';
 
     const animated = animation ? `btn_animation` : '';
@@ -12,8 +12,10 @@ const Button = ({ bgColor, icon, animation = false, size, auto = false, children
 
     const autoBtn = auto ? `btn_auto_` : '';
 
+    const square = isSquared ? `btn_square` : '';
+
     return (
-        <button className={`btn ${btnColor} ${animated} ${sizeBtn}`} onClick={onClick}>
+        <button className={`btn ${btnColor} ${animated} ${sizeBtn} ${square}`} onClick={onClick}>
             {icon ? (
                 <div className={`btn_icon ${autoBtn}icon`}>
                     <i className={`${icon} bx-tada`} />
