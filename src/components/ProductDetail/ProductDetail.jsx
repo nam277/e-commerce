@@ -6,7 +6,20 @@ import NumberCommas from '~/utilities/NumberCommas';
 
 import './ProductDetail.scss';
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({
+    product = {
+        title: 'Áo thun Dinosaur 02',
+        price: '159000',
+        oldPrice: '499999',
+        image01: '',
+        image02: '',
+        categorySlug: 'ao-thun',
+        colors: ['white', 'red', 'blue'],
+        slug: 'ao-thun-dinosaur-02',
+        size: ['s', 'm'],
+        description: '',
+    },
+}) => {
     const [activeImage, setActiveImage] = useState(product.image01);
     const [moreDescription, setMoreDescription] = useState(false);
     const [currentColor, setCurrentColor] = useState();

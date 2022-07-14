@@ -10,7 +10,7 @@ import ProductCard from '~/components/ProductCard';
 
 import heroSliderData from '~/assets/fakeData/heroSlider';
 import policies from '~/assets/fakeData/policies';
-import { getAllProducts, getProducts } from '~/assets/fakeData/products';
+import { getProducts } from '~/assets/fakeData/products';
 import banner from '~/assets/images/banner.png';
 
 const Home = () => {

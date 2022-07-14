@@ -5,8 +5,16 @@ import './ProductCard.scss';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
 import NumberCommas from '~/utilities';
+import { useDispatch } from 'react-redux';
+import { open } from '~/redux/productDetailReducer';
 
 const ProductCard = ({ title, price, oldPrice, image01, image02, path, size, auto, animation = true }) => {
+    const dispatch = useDispatch();
+
+    const handleProductModal = () => {
+        dispatch(open(path));
+    };
+
     return (
         <div className="product-card">
             <Link to={`/catalog/${path}`}>
@@ -22,7 +30,13 @@ const ProductCard = ({ title, price, oldPrice, image01, image02, path, size, aut
             </div>
             <div className="product-card_icon">
                 <Link to={`/catalog/${path}`}>
-                    <Button icon="bx bx-cart" auto={auto} size={size} animation={animation}>
+                    <Button
+                        icon="bx bx-cart"
+                        auto={auto}
+                        size={size}
+                        animation={animation}
+                        onClick={handleProductModal}
+                    >
                         Xem chi tiết
                     </Button>
                 </Link>
