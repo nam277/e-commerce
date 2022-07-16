@@ -153,6 +153,27 @@
                 padding-left: 10px;
                 margin-left: 5px;
             }
+
+            &_cart {
+                position: relative;
+
+                p {
+                    position: absolute;
+                    top: -14px;
+                    right: -10px;
+                    text-align: center;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                    color: $text-white-color;
+                    height: 28px;
+                    min-width: 28px;
+                    width: max-content;
+                    line-height: 28px;
+                    background-color: $main-color;
+                    border-radius: 50%;
+                    border: 1px solid $text-white-color;
+                }
+            }
         }
     }
 }

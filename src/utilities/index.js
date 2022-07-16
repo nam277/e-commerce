@@ -1,1 +1,1 @@
-export { default } from './NumberCommas';
+export { default } from './numberFormat';

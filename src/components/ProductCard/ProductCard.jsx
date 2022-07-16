@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './ProductCard.scss';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
-import NumberCommas from '~/utilities';
+import numberFormat from '~/utilities';
 import { useDispatch } from 'react-redux';
 import { open } from '~/redux/productDetailReducer';
 
@@ -25,8 +25,8 @@ const ProductCard = ({ title, price, oldPrice, image01, image02, path, size, aut
             </Link>
             <span className="product-card_name">{title}</span>
             <div className="product-card_price">
-                <h3 className="product-card_price_new">{NumberCommas(price)}</h3>
-                <h3 className="product-card_price_old">{NumberCommas(oldPrice)}</h3>
+                <h3 className="product-card_price_new">{numberFormat(price)}</h3>
+                <h3 className="product-card_price_old">{numberFormat(oldPrice)}</h3>
             </div>
             <div className="product-card_icon">
                 <Link to={`/catalog/${path}`}>

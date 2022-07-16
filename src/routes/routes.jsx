@@ -1,5 +1,5 @@
 import Home from '~/pages/Home';
-import Cart from '~/pages/Cart';
+import Cart from '~/pages/Cart/Cart';
 import Catalog from '~/pages/Catalog';
 import Product from '~/pages/Product';
 import About from '~/pages/About';

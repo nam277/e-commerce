@@ -115,7 +115,7 @@ const products = [
     },
     {
         title: 'Áo somi caro 07',
-        price: '194000',
+        price: '156000',
         oldPrice: '499999',
         image01: product_07_image_01,
         image02: product_07_image_02,
@@ -128,7 +128,7 @@ const products = [
     },
     {
         title: 'Áo somi dài tay 08',
-        price: '194000',
+        price: '89000',
         oldPrice: '499999',
         image01: product_08_image_01,
         image02: product_08_image_02,
@@ -154,7 +154,7 @@ const products = [
     },
     {
         title: 'Quần jean phong cách 10',
-        price: '194000',
+        price: '125000',
         oldPrice: '499999',
         image01: product_10_image_01,
         image02: product_10_image_02,
@@ -180,7 +180,7 @@ const products = [
     },
     {
         title: 'Quần jean 12',
-        price: '194000',
+        price: '256000',
         oldPrice: '499999',
         image01: product_12_image_01,
         image02: product_12_image_02,
@@ -258,7 +258,7 @@ const products = [
     },
     {
         title: 'Quần jean phong cách 18',
-        price: '194000',
+        price: '254000',
         oldPrice: '499999',
         image01: product_10_image_01,
         image02: product_10_image_02,

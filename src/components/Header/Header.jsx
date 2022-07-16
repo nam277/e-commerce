@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './Header.scss';
 import logo from '~/assets/images/Logo-2.png';
+import { useState } from 'react';
 
 const mainNav = [
     {
@@ -47,6 +49,14 @@ const Header = () => {
         headerLeftRef.current.classList.toggle('active');
     };
 
+    const items = useSelector((store) => store.productCart);
+
+    const [quantity, setQuantity] = useState(0);
+
+    useEffect(() => {
+        setQuantity(items.reduce((total, item) => total + Number(item.quantity), 0));
+    }, [items]);
+
     return (
         <div className="header" ref={headerRef}>
             <div className="content">
@@ -78,8 +88,9 @@ const Header = () => {
                         <i className="bx bx-search"></i>
                     </div>
                     <div className="header_right_item">
-                        <Link to="/cart">
+                        <Link to="/cart" className="header_right_item_cart">
                             <i className="bx bx-cart"></i>
+                            <p>{quantity}</p>
                         </Link>
                     </div>
                     <div className="header_right_item">

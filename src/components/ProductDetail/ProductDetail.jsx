@@ -2,21 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../Button';
-import NumberCommas from '~/utilities/NumberCommas';
+import numberFormat from '~/utilities/numberFormat';
 
 import './ProductDetail.scss';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '~/redux/cartReducer';
+import { close } from '~/redux/productDetailReducer';
 
 const ProductDetail = ({
     product = {
-        title: 'Áo thun Dinosaur 02',
-        price: '159000',
-        oldPrice: '499999',
+        title: '',
+        price: '',
+        oldPrice: '',
         image01: '',
         image02: '',
-        categorySlug: 'ao-thun',
-        colors: ['white', 'red', 'blue'],
-        slug: 'ao-thun-dinosaur-02',
-        size: ['s', 'm'],
+        categorySlug: '',
+        colors: [],
+        slug: '',
+        size: [],
         description: '',
     },
 }) => {
@@ -26,6 +29,8 @@ const ProductDetail = ({
     const [currentSize, SetCurrentSize] = useState();
     const [quantity, setQuantity] = useState(1);
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setActiveImage(product.image01);
@@ -70,13 +75,35 @@ const ProductDetail = ({
 
     const addToCart = () => {
         if (isChecked()) {
-            console.log(currentColor, currentSize, quantity);
+            dispatch(
+                addProduct({
+                    path: product.slug,
+                    image: product.image01,
+                    title: product.title,
+                    color: currentColor,
+                    size: currentSize,
+                    price: product.price,
+                    quantity: quantity,
+                }),
+            );
         }
     };
 
     const goToCart = () => {
         if (isChecked()) {
+            dispatch(
+                addProduct({
+                    path: product.slug,
+                    image: product.image01,
+                    title: product.title,
+                    color: currentColor,
+                    size: currentSize,
+                    price: product.price,
+                    quantity: quantity,
+                }),
+            );
             navigate('/cart');
+            dispatch(close());
         }
     };
 
@@ -109,7 +136,7 @@ const ProductDetail = ({
             </div>
             <div className="product_options">
                 <h2 className="product_options_heading">{product.title}</h2>
-                <h3 className="product_options_price">{NumberCommas(product.price)}</h3>
+                <h3 className="product_options_price">{numberFormat(product.price)}</h3>
                 <h4 className="product_options_title">Màu sắc</h4>
                 <div className="product_options_items">
                     {product.colors.map((color, index) => (

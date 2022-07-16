@@ -1,16 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    value: '',
-};
-
 const productDetailReducer = createSlice({
     name: 'productDetail',
-    initialState,
+    initialState: { value: '' },
     reducers: {
         open: (state, action) => {
             state.value = action.payload;
         },
+
         close: (state) => {
             state.value = '';
         },
