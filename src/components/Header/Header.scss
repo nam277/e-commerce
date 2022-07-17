@@ -171,18 +171,17 @@
                     height: $height-width-line;
                     min-width: $height-width-line;
                     width: max-content;
-                    line-height: $height-width-line;
                     background-color: $main-color;
                     border-radius: 50%;
                     border: 1px solid $text-white-color;
+                    @include flex(center, center);
+
                     @include mobile {
                         top: -7px;
                         font-size: 1rem;
                         $height-width-line: 20px;
                         height: $height-width-line;
                         min-width: $height-width-line;
-                        width: max-content;
-                        line-height: $height-width-line;
                         background-color: rgba(66, 103, 194, 0.8);
                     }
                 }
