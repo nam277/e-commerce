@@ -16,8 +16,8 @@
     }
 }
 
-@mixin mobile {
-    @media only screen and (max-width: $mobile-width) {
+@mixin middle {
+    @media only screen and (max-width: $middle-width) {
         @content;
     }
 }

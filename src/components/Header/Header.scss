@@ -65,6 +65,7 @@
         flex: 1;
         font-size: 1.5rem;
         height: 100%;
+        z-index: 99;
         @include flex(center, flex-start);
 
         &_item {
@@ -141,6 +142,7 @@
         @include flex(center, flex-end);
 
         @include mobile {
+            justify-content: space-between;
             font-size: 1.5rem;
         }
 
@@ -150,14 +152,15 @@
             cursor: pointer;
 
             @include mobile {
-                padding-left: 10px;
-                margin-left: 5px;
+                padding: 0 10px 0 10px;
+                margin-left: 0px;
             }
 
             &_cart {
                 position: relative;
 
                 p {
+                    $height-width-line: 28px;
                     position: absolute;
                     top: -14px;
                     right: -10px;
@@ -165,13 +168,23 @@
                     font-size: 1.1rem;
                     font-weight: bold;
                     color: $text-white-color;
-                    height: 28px;
-                    min-width: 28px;
+                    height: $height-width-line;
+                    min-width: $height-width-line;
                     width: max-content;
-                    line-height: 28px;
+                    line-height: $height-width-line;
                     background-color: $main-color;
                     border-radius: 50%;
                     border: 1px solid $text-white-color;
+                    @include mobile {
+                        top: -7px;
+                        font-size: 1rem;
+                        $height-width-line: 20px;
+                        height: $height-width-line;
+                        min-width: $height-width-line;
+                        width: max-content;
+                        line-height: $height-width-line;
+                        background-color: rgba(66, 103, 194, 0.8);
+                    }
                 }
             }
         }

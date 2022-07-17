@@ -28,6 +28,14 @@
         transform: translateY(-100%);
         transition: transform 0.5s linear;
 
+        @include tablet {
+            width: 70%;
+        }
+
+        @include mobile {
+            width: 100%;
+        }
+
         &_close {
             position: absolute;
             top: 0;

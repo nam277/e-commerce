@@ -9,8 +9,6 @@ const CartProduct = ({ product }) => {
     const [newProduct, setProduct] = useState(product);
     const [quantity, setQuantity] = useState(product.quantity);
 
-    console.log(product);
-
     useEffect(() => {
         setProduct(product);
         setQuantity(product.quantity);
@@ -23,7 +21,6 @@ const CartProduct = ({ product }) => {
         if (type === 'down') {
             dispatch(updateProduct({ ...newProduct, quantity: quantity === 1 ? 1 : quantity - 1 }));
         }
-        console.log(newProduct);
     };
     return (
         <div className="cart_products_product">
@@ -34,18 +31,29 @@ const CartProduct = ({ product }) => {
                 <Link to={`/catalog/${newProduct.path}`} className="cart_products_product_right_info">
                     {newProduct.title} - {newProduct.size} - {newProduct.color}
                 </Link>
-                <h3 className="cart_products_product_right_price">{numberFormat(newProduct.price)}</h3>
-                <div className="cart_products_product_right_update">
-                    <div className="cart_products_product_right_update_calculate" onClick={() => handleUpdate('down')}>
-                        <i className="bx bx-minus"></i>
+                <div className="cart_products_product_right_content">
+                    <h3 className="cart_products_product_right_price">{numberFormat(newProduct.price)}</h3>
+                    <div className="cart_products_product_right_update">
+                        <div
+                            className="cart_products_product_right_update_calculate"
+                            onClick={() => handleUpdate('down')}
+                        >
+                            <i className="bx bx-minus"></i>
+                        </div>
+                        <div className="cart_products_product_right_update_number">{quantity}</div>
+                        <div
+                            className="cart_products_product_right_update_calculate"
+                            onClick={() => handleUpdate('up')}
+                        >
+                            <i className="bx bx-plus"></i>
+                        </div>
                     </div>
-                    <div className="cart_products_product_right_update_number">{quantity}</div>
-                    <div className="cart_products_product_right_update_calculate" onClick={() => handleUpdate('up')}>
-                        <i className="bx bx-plus"></i>
+                    <div
+                        className="cart_products_product_right_delete"
+                        onClick={() => dispatch(removeProduct(newProduct))}
+                    >
+                        <i className="bx bxs-trash"></i>
                     </div>
-                </div>
-                <div className="cart_products_product_right_delete" onClick={() => dispatch(removeProduct(newProduct))}>
-                    <i className="bx bxs-trash"></i>
                 </div>
             </div>
         </div>
