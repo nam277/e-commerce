@@ -7,6 +7,8 @@ import './Layout.scss';
 import Header from '~/components/Header/Header';
 import Footer from '~/components/Footer';
 import ProductDetailModal from '../ProductDetailModal';
+import Alert from '../Alert/Alert';
+import LoginFormModal from '../LoginFormModal';
 
 const Layout = () => {
     const [showTopBtn, setShowTopBtn] = useState(false);
@@ -46,6 +48,8 @@ const Layout = () => {
             </div>
             <Footer />
             <ProductDetailModal />
+            <Alert />
+            <LoginFormModal />
         </BrowserRouter>
     );
 };

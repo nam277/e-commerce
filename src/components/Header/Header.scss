@@ -189,3 +189,60 @@
         }
     }
 }
+
+.drop_login {
+    width: max-content;
+    background-color: $main-background;
+    box-shadow: 0 0 14px 6px rgba($color: #000000, $alpha: 0.2);
+    border-radius: 5px;
+    font-size: 1.3rem;
+    cursor: default;
+    @include flex(center, space-between);
+    &_login {
+        cursor: pointer;
+        padding: 15px 0 15px 20px;
+        &:hover {
+            color: $main-color;
+        }
+    }
+    p {
+        font-size: 1.7rem;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &_logout {
+        padding: 15px 20px 15px 0;
+        cursor: pointer;
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
+
+.drop_user {
+    width: max-content;
+    background-color: $main-background;
+    box-shadow: 0 0 14px 6px rgba($color: #000000, $alpha: 0.2);
+    border-radius: 5px;
+    font-size: 1.3rem;
+    cursor: default;
+    @include flex(flex-start, space-between);
+    flex-direction: column;
+    &_item {
+        padding: 10px 20px 10px 20px;
+        cursor: pointer;
+        width: 100%;
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
+
+.icon_logged {
+    img {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+    }
+}

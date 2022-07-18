@@ -1,10 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './Header.scss';
 import logo from '~/assets/images/Logo-2.png';
+import testUser from '~/assets/images/test_user.jpg';
 import { useState } from 'react';
+import { DropCart } from '~/pages/Cart';
+import HeadlessTippy from '@tippyjs/react/headless';
+import { mount } from '~/redux/modalReducer';
 
 const mainNav = [
     {
@@ -29,6 +33,10 @@ const Header = () => {
     const { pathname } = useLocation();
     const headerRef = useRef(null);
     const headerLeftRef = useRef(null);
+
+    const dispatch = useDispatch();
+
+    const [isLogged, setIsLogged] = useState(false);
 
     const handleScroll = () => {
         if (window.scrollY > 80) {
@@ -87,15 +95,78 @@ const Header = () => {
                     <div className="header_right_item">
                         <i className="bx bx-search"></i>
                     </div>
-                    <div className="header_right_item">
-                        <Link to="/cart" className="header_right_item_cart">
-                            <i className="bx bx-cart"></i>
-                            <p>{quantity}</p>
-                        </Link>
-                    </div>
-                    <div className="header_right_item">
-                        <i className="bx bx-user"></i>
-                    </div>
+                    <HeadlessTippy
+                        interactive
+                        placement="bottom-end"
+                        render={(attrs) => (
+                            <div className="box" tabIndex="-1" {...attrs}>
+                                <DropCart />
+                            </div>
+                        )}
+                    >
+                        <div className="header_right_item">
+                            <Link to="/cart" className="header_right_item_cart">
+                                <i className="bx bx-cart"></i>
+                                <p>{quantity}</p>
+                            </Link>
+                        </div>
+                    </HeadlessTippy>
+
+                    {!isLogged ? (
+                        <HeadlessTippy
+                            interactive
+                            placement="bottom-end"
+                            render={(attrs) => (
+                                <div className="box" tabIndex="-1" {...attrs}>
+                                    <div className="drop_login">
+                                        <span className="drop_login_login" onClick={() => dispatch(mount('loginForm'))}>
+                                            Đăng nhập
+                                        </span>
+                                        <p>|</p>
+                                        <span
+                                            className="drop_login_logout"
+                                            onClick={() => dispatch(mount('loginForm'))}
+                                        >
+                                            Đăng ký
+                                        </span>
+                                    </div>
+                                </div>
+                            )}
+                        >
+                            <div className="header_right_item ">
+                                <i className="bx bx-user"></i>
+                            </div>
+                        </HeadlessTippy>
+                    ) : (
+                        <HeadlessTippy
+                            interactive
+                            placement="bottom-end"
+                            render={(attrs) => (
+                                <div className="box" tabIndex="-1" {...attrs}>
+                                    <div className="drop_user ">
+                                        <span className="drop_user_item" onClick={() => dispatch(mount('errorName'))}>
+                                            Nam 123456
+                                        </span>
+                                        <span className="drop_user_item" onClick={() => dispatch(mount('errorName'))}>
+                                            Cài đặt
+                                        </span>
+                                        <Link to="/cart" className="drop_user_item">
+                                            <span>Đơn hàng</span>
+                                        </Link>
+                                        <span className="drop_user_item" onClick={() => setIsLogged(false)}>
+                                            Đăng xuất
+                                        </span>
+                                    </div>
+                                </div>
+                            )}
+                        >
+                            <div className="header_right_item ">
+                                <div className="icon_logged">
+                                    <img src={testUser} alt="User" />
+                                </div>
+                            </div>
+                        </HeadlessTippy>
+                    )}
                 </div>
             </div>
         </div>
