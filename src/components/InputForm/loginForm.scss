@@ -1,0 +1,121 @@
+@import '../../sass/index.scss';
+
+.login_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 0;
+    z-index: 102;
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    overflow: hidden;
+    @include flex(flex-start, center);
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+        opacity: 1;
+        // padding-top: 15vh;
+        visibility: visible;
+    }
+
+    &_content {
+        position: fixed;
+        top: 50%;
+        flex-direction: column;
+        padding: 20px;
+        width: max-content;
+        background-color: $main-background;
+        position: relative;
+        transform: translate(0, -100%);
+        transition: transform 0.2s linear;
+
+        &_form {
+            padding-top: 40px;
+
+            &_title {
+                color: $main-color;
+                margin-bottom: 20px;
+            }
+
+            .form_inValid_notification {
+                color: red;
+                text-align: justify;
+                font-size: 1.3rem;
+                font-weight: 100;
+            }
+
+            form {
+                .inputItem {
+                    margin-bottom: 5px;
+                    @include flex(flex-start, center);
+                    flex-direction: column;
+                    width: 400px;
+
+                    label {
+                        font-size: 1.3rem;
+                        color: gray;
+                    }
+
+                    input {
+                        width: 100%;
+                        margin: 5px 0px;
+                        padding: 10px 15px;
+                        border-radius: 5px;
+                        border: 1px solid gray;
+
+                        &::placeholder {
+                            font-size: 1.2rem;
+                        }
+
+                        &:focus {
+                            border: 1px solid $main-color;
+                            outline: none;
+                        }
+                    }
+
+                    input,
+                    textarea {
+                        font-size: 1.3rem;
+                    }
+
+                    span {
+                        color: red;
+                        font-size: 1.1rem;
+                        padding: 2px 5px 0 5px;
+                        text-align: justify;
+                        display: none;
+                    }
+
+                    input:invalid[focused='false'] ~ span {
+                        display: block;
+                    }
+
+                    input:invalid[focused='false'] {
+                        border-color: red;
+                    }
+                }
+
+                .form_button {
+                    @include flex(center, flex-end);
+                }
+
+                .form_button_sigIn {
+                    margin-top: 15px;
+                    @include flex(center, flex-end);
+                }
+            }
+        }
+
+        &_close {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    &.active &_content {
+        transform: translate(0, -50%);
+    }
+}

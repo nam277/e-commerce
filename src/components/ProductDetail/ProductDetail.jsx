@@ -5,7 +5,7 @@ import Button from '../Button';
 import numberFormat from '~/utilities/numberFormat';
 
 import './ProductDetail.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '~/redux/cartReducer';
 import { close } from '~/redux/productDetailReducer';
 
@@ -29,6 +29,7 @@ const ProductDetail = ({
     const [currentSize, SetCurrentSize] = useState();
     const [quantity, setQuantity] = useState(1);
     const navigate = useNavigate();
+    const [currentUser] = useSelector((store) => store.currentUser);
 
     const dispatch = useDispatch();
 
@@ -73,38 +74,30 @@ const ProductDetail = ({
         return true;
     };
 
-    const addToCart = () => {
-        if (isChecked()) {
-            dispatch(
-                addProduct({
-                    path: product.slug,
-                    image: product.image01,
-                    title: product.title,
-                    color: currentColor,
-                    size: currentSize,
-                    price: product.price,
-                    quantity: quantity,
-                }),
-            );
-        }
-    };
-
-    const goToCart = () => {
-        if (isChecked()) {
-            dispatch(
-                addProduct({
-                    path: product.slug,
-                    image: product.image01,
-                    title: product.title,
-                    color: currentColor,
-                    size: currentSize,
-                    price: product.price,
-                    quantity: quantity,
-                }),
-            );
-            navigate('/cart');
-            dispatch(close());
-        }
+    const handleToCart = (type) => {
+        if (currentUser) {
+            if (isChecked()) {
+                dispatch(
+                    addProduct({
+                        username: currentUser.username,
+                        password: currentUser.password,
+                        product: {
+                            path: product.slug,
+                            image: product.image01,
+                            title: product.title,
+                            color: currentColor,
+                            size: currentSize,
+                            price: product.price,
+                            quantity: quantity,
+                        },
+                    }),
+                );
+                if (type === 'goToCart') {
+                    navigate('/cart');
+                    dispatch(close());
+                }
+            }
+        } else alert('pls login first');
     };
 
     return (
@@ -172,10 +165,10 @@ const ProductDetail = ({
                     </div>
                 </div>
                 <div className="product_options_button">
-                    <Button size="small" onClick={() => addToCart()}>
+                    <Button size="small" onClick={() => handleToCart()}>
                         Thêm vào giỏ hàng
                     </Button>
-                    <Button size="small" onClick={() => goToCart()}>
+                    <Button size="small" onClick={() => handleToCart('goToCart')}>
                         Mua ngay
                     </Button>
                 </div>

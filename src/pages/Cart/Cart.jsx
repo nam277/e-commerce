@@ -6,9 +6,10 @@ import './Cart.scss';
 import numberFormat from '~/utilities/numberFormat';
 import Button from '~/components/Button';
 import CartProduct from './CartProduct';
+import { currentProduct } from '~/redux/selector';
 
 const Cart = () => {
-    const productState = useSelector((state) => state.productCart);
+    const productState = useSelector(currentProduct);
 
     const [products, setProduct] = useState(productState);
     const [totalPrice, setTotalPrice] = useState(0);

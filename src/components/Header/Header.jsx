@@ -9,6 +9,8 @@ import { useState } from 'react';
 import { DropCart } from '~/pages/Cart';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { mount } from '~/redux/modalReducer';
+import { logOutUser } from '~/redux/currentUserReducer';
+import { currentProduct } from '~/redux/selector';
 
 const mainNav = [
     {
@@ -31,12 +33,33 @@ const mainNav = [
 
 const Header = () => {
     const { pathname } = useLocation();
+    const dispatch = useDispatch();
+
     const headerRef = useRef(null);
     const headerLeftRef = useRef(null);
 
-    const dispatch = useDispatch();
-
     const [isLogged, setIsLogged] = useState(false);
+    const [quantity, setQuantity] = useState(0);
+
+    const [currentUser] = useSelector((store) => store.currentUser);
+    const items = useSelector(currentProduct);
+
+    useEffect(() => {
+        if (currentUser) {
+            setIsLogged(true);
+        }
+    }, [currentUser]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        setQuantity(items.reduce((total, item) => total + Number(item.quantity), 0));
+    }, [items]);
 
     const handleScroll = () => {
         if (window.scrollY > 80) {
@@ -46,24 +69,14 @@ const Header = () => {
         }
     };
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     const handleMenu = () => {
         headerLeftRef.current.classList.toggle('active');
     };
 
-    const items = useSelector((store) => store.productCart);
-
-    const [quantity, setQuantity] = useState(0);
-
-    useEffect(() => {
-        setQuantity(items.reduce((total, item) => total + Number(item.quantity), 0));
-    }, [items]);
+    const handleLogOut = () => {
+        dispatch(logOutUser());
+        setIsLogged(false);
+    };
 
     return (
         <div className="header" ref={headerRef}>
@@ -95,77 +108,92 @@ const Header = () => {
                     <div className="header_right_item">
                         <i className="bx bx-search"></i>
                     </div>
-                    <HeadlessTippy
-                        interactive
-                        placement="bottom-end"
-                        render={(attrs) => (
-                            <div className="box" tabIndex="-1" {...attrs}>
-                                <DropCart />
+                    <span>
+                        <HeadlessTippy
+                            interactive
+                            placement="bottom-end"
+                            render={(attrs) => (
+                                <div className="box" tabIndex="-1" {...attrs}>
+                                    <DropCart />
+                                </div>
+                            )}
+                        >
+                            <div className="header_right_item">
+                                <Link to="/cart" className="header_right_item_cart">
+                                    <i className="bx bx-cart"></i>
+                                    <p>{quantity}</p>
+                                </Link>
                             </div>
-                        )}
-                    >
-                        <div className="header_right_item">
-                            <Link to="/cart" className="header_right_item_cart">
-                                <i className="bx bx-cart"></i>
-                                <p>{quantity}</p>
-                            </Link>
-                        </div>
-                    </HeadlessTippy>
+                        </HeadlessTippy>
+                    </span>
 
                     {!isLogged ? (
-                        <HeadlessTippy
-                            interactive
-                            placement="bottom-end"
-                            render={(attrs) => (
-                                <div className="box" tabIndex="-1" {...attrs}>
-                                    <div className="drop_login">
-                                        <span className="drop_login_login" onClick={() => dispatch(mount('loginForm'))}>
-                                            Đăng nhập
-                                        </span>
-                                        <p>|</p>
-                                        <span
-                                            className="drop_login_logout"
-                                            onClick={() => dispatch(mount('loginForm'))}
-                                        >
-                                            Đăng ký
-                                        </span>
+                        <span>
+                            <HeadlessTippy
+                                interactive
+                                placement="bottom-end"
+                                render={(attrs) => (
+                                    <div className="box" tabIndex="-1" {...attrs}>
+                                        <div className="drop_login">
+                                            <span
+                                                className="drop_login_login"
+                                                onClick={() => dispatch(mount('loginForm'))}
+                                            >
+                                                Đăng nhập
+                                            </span>
+                                            <p>|</p>
+                                            <span
+                                                className="drop_login_logout"
+                                                onClick={() => dispatch(mount('sigInForm'))}
+                                            >
+                                                Đăng ký
+                                            </span>
+                                        </div>
                                     </div>
+                                )}
+                            >
+                                <div className="header_right_item ">
+                                    <i className="bx bx-user"></i>
                                 </div>
-                            )}
-                        >
-                            <div className="header_right_item ">
-                                <i className="bx bx-user"></i>
-                            </div>
-                        </HeadlessTippy>
+                            </HeadlessTippy>
+                        </span>
                     ) : (
-                        <HeadlessTippy
-                            interactive
-                            placement="bottom-end"
-                            render={(attrs) => (
-                                <div className="box" tabIndex="-1" {...attrs}>
-                                    <div className="drop_user ">
-                                        <span className="drop_user_item" onClick={() => dispatch(mount('errorName'))}>
-                                            Nam 123456
-                                        </span>
-                                        <span className="drop_user_item" onClick={() => dispatch(mount('errorName'))}>
-                                            Cài đặt
-                                        </span>
-                                        <Link to="/cart" className="drop_user_item">
-                                            <span>Đơn hàng</span>
-                                        </Link>
-                                        <span className="drop_user_item" onClick={() => setIsLogged(false)}>
-                                            Đăng xuất
-                                        </span>
+                        <span>
+                            <HeadlessTippy
+                                interactive
+                                placement="bottom-end"
+                                render={(attrs) => (
+                                    <div className="box" tabIndex="-1" {...attrs}>
+                                        <div className="drop_user ">
+                                            <span
+                                                className="drop_user_item"
+                                                onClick={() => dispatch(mount('errorName'))}
+                                            >
+                                                {currentUser.username}
+                                            </span>
+                                            <span
+                                                className="drop_user_item"
+                                                onClick={() => dispatch(mount('errorName'))}
+                                            >
+                                                Cài đặt
+                                            </span>
+                                            <Link to="/cart" className="drop_user_item">
+                                                <span>Đơn hàng</span>
+                                            </Link>
+                                            <span className="drop_user_item" onClick={handleLogOut}>
+                                                Đăng xuất
+                                            </span>
+                                        </div>
+                                    </div>
+                                )}
+                            >
+                                <div className="header_right_item ">
+                                    <div className="icon_logged">
+                                        <img src={testUser} alt="User" />
                                     </div>
                                 </div>
-                            )}
-                        >
-                            <div className="header_right_item ">
-                                <div className="icon_logged">
-                                    <img src={testUser} alt="User" />
-                                </div>
-                            </div>
-                        </HeadlessTippy>
+                            </HeadlessTippy>
+                        </span>
                     )}
                 </div>
             </div>

@@ -5,9 +5,10 @@ import Button from '~/components/Button';
 import noProduct from '~/assets/images/No_product.png';
 
 import numberFormat from '~/utilities/numberFormat';
+import { currentProduct } from '~/redux/selector';
 
 const DropCart = () => {
-    const productState = useSelector((state) => state.productCart);
+    const productState = useSelector(currentProduct);
 
     return (
         <div className="dropCart">

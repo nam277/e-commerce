@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { updateProduct, removeProduct } from '~/redux/cartReducer';
 import numberFormat from '~/utilities/numberFormat';
@@ -8,6 +8,7 @@ const CartProduct = ({ product }) => {
     const dispatch = useDispatch();
     const [newProduct, setProduct] = useState(product);
     const [quantity, setQuantity] = useState(product.quantity);
+    const [currentUser] = useSelector((store) => store.currentUser);
 
     useEffect(() => {
         setProduct(product);
@@ -16,12 +17,40 @@ const CartProduct = ({ product }) => {
 
     const handleUpdate = (type) => {
         if (type === 'up') {
-            dispatch(updateProduct({ ...newProduct, quantity: quantity + 1 }));
+            dispatch(
+                updateProduct({
+                    username: currentUser.username,
+                    password: currentUser.password,
+                    product: {
+                        ...newProduct,
+                        quantity: quantity + 1,
+                    },
+                }),
+            );
         }
         if (type === 'down') {
-            dispatch(updateProduct({ ...newProduct, quantity: quantity === 1 ? 1 : quantity - 1 }));
+            dispatch(
+                updateProduct({
+                    username: currentUser.username,
+                    password: currentUser.password,
+                    product: { ...newProduct, quantity: quantity < 2 ? 1 : quantity - 1 },
+                }),
+            );
         }
     };
+
+    const handleRemove = () => {
+        dispatch(
+            removeProduct({
+                username: currentUser.username,
+                password: currentUser.password,
+                product: {
+                    ...newProduct,
+                },
+            }),
+        );
+    };
+
     return (
         <div className="cart_products_product">
             <div className="cart_products_product_left">
@@ -48,10 +77,7 @@ const CartProduct = ({ product }) => {
                             <i className="bx bx-plus"></i>
                         </div>
                     </div>
-                    <div
-                        className="cart_products_product_right_delete"
-                        onClick={() => dispatch(removeProduct(newProduct))}
-                    >
+                    <div className="cart_products_product_right_delete" onClick={() => handleRemove()}>
                         <i className="bx bxs-trash"></i>
                     </div>
                 </div>
