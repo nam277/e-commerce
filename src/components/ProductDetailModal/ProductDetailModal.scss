@@ -18,6 +18,11 @@
         opacity: 1;
         padding-top: 50px;
         visibility: visible;
+
+        @include mobile {
+            padding-left: 7px;
+            padding-right: 7px;
+        }
     }
 
     &_content {

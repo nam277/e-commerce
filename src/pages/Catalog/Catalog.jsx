@@ -97,7 +97,7 @@ const Catalog = () => {
                         <i className="bx bx-left-arrow-alt"></i>
                     </div>
                     <div className="catalog_filter_item">
-                        <h3 className="catalog_filter_item_title">danh mục sản phẩm</h3>
+                        <h3 className="catalog_filter_item_title">Catalog</h3>
                         <div className="catalog_filter_item_checkbox">
                             {category.map((item, index) => (
                                 <Checkbox
@@ -110,7 +110,7 @@ const Catalog = () => {
                         </div>
                     </div>
                     <div className="catalog_filter_item">
-                        <h3 className="catalog_filter_item_title">màu sắc</h3>
+                        <h3 className="catalog_filter_item_title">Colors</h3>
                         <div className="catalog_filter_item_checkbox">
                             {colors.map((item, index) => (
                                 <Checkbox
@@ -123,7 +123,7 @@ const Catalog = () => {
                         </div>
                     </div>
                     <div className="catalog_filter_item">
-                        <h3 className="catalog_filter_item_title">kích thước</h3>
+                        <h3 className="catalog_filter_item_title">Sizes</h3>
                         <div className="catalog_filter_item_checkbox">
                             {sizes.map((item, index) => (
                                 <Checkbox
@@ -137,7 +137,7 @@ const Catalog = () => {
                     </div>
                     <div className="catalog_filter_delete">
                         <Button size="small" onClick={handleClearFilter}>
-                            xóa toàn bộ
+                            Delete all
                         </Button>
                     </div>
                 </div>

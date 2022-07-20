@@ -10,6 +10,9 @@
     z-index: 99;
     transition: height 0.3s linear;
     box-shadow: $box-shadow;
+    background-image: url(../../assets/images/image_header.jpg);
+    background-size: cover;
+    // background-position-y: center;
 
     @include tablet {
         height: $header-tablet-height;
@@ -127,6 +130,18 @@
         height: 50%;
         @include flex(center, center);
 
+        @include tablet {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @include tablet {
+            position: none;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         &_cover {
             height: 100%;
             img {
@@ -142,7 +157,6 @@
         @include flex(center, flex-end);
 
         @include mobile {
-            justify-content: space-between;
             font-size: 1.5rem;
         }
 
@@ -151,9 +165,24 @@
             margin-left: 10px;
             cursor: pointer;
 
+            &:hover span,
+            &:hover i {
+                color: $main-color;
+            }
+
+            @include flex(center, flex-end);
+
             @include mobile {
                 padding: 0 10px 0 10px;
                 margin-left: 0px;
+            }
+
+            &_language {
+                font-size: 1.4rem;
+                margin-left: 4px;
+                @include mobile {
+                    display: none;
+                }
             }
 
             &_cart {
@@ -186,6 +215,33 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.icon_logged {
+    img {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+    }
+}
+
+.drop_language {
+    width: max-content;
+    background-color: $main-background;
+    box-shadow: 0 0 14px 6px rgba($color: #000000, $alpha: 0.2);
+    border-radius: 5px;
+    font-size: 1.3rem;
+    cursor: default;
+    @include flex(flex-start, space-between);
+    flex-direction: column;
+    span {
+        padding: 10px 20px 10px 20px;
+        cursor: pointer;
+        width: 100%;
+        &:hover {
+            color: $main-color;
         }
     }
 }
@@ -236,13 +292,5 @@
         &:hover {
             color: $main-color;
         }
-    }
-}
-
-.icon_logged {
-    img {
-        height: 32px;
-        width: 32px;
-        border-radius: 50%;
     }
 }

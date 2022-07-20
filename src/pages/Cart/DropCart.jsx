@@ -14,12 +14,12 @@ const DropCart = () => {
         <div className="dropCart">
             {productState.length === 0 ? (
                 <div className="dropCart_empty">
-                    <img src={noProduct} alt="Chưa có sản phẩm trong giỏ hàng" />
-                    <span className="dropCart_empty_title">Chưa có sản phẩm trong giỏ hàng</span>
+                    <img src={noProduct} alt="Your cart is currently empty" />
+                    <span className="dropCart_empty_title">No products yet</span>
                 </div>
             ) : (
                 <>
-                    <h4 className="dropCart_title">Sản phẩm đã thêm vào giỏ hàng</h4>
+                    <h4 className="dropCart_title">Recently Added Products</h4>
                     <div className="dropCart_products">
                         {productState.map((product, index) => (
                             <div className="dropCart_product" key={index}>
@@ -38,7 +38,7 @@ const DropCart = () => {
                     <div className="dropCart_button">
                         <Link to="/Cart">
                             <Button isSquared={true} size="small">
-                                Xem giỏ hàng
+                                Move to cart
                             </Button>
                         </Link>
                     </div>

@@ -1,22 +1,22 @@
 const policies = [
     {
-        name: 'Miễn phí giao hàng',
-        description: 'Miễn phí ship với đơn hàng > 239K',
+        name: 'Free ship',
+        description: 'Free ship with order > 239.000đ',
         icon: 'bx bx-shopping-bag',
     },
     {
-        name: 'Thanh toán COD',
-        description: 'Thanh toán khi nhận hàng (COD)',
+        name: 'Pay COD',
+        description: 'Cash on Delivery(COD)',
         icon: 'bx bx-credit-card',
     },
     {
-        name: 'Khách hàng VIP',
-        description: 'Ưu đãi dành cho khách hàng VIP',
+        name: 'VIP customers',
+        description: 'Offers for VIP customers',
         icon: 'bx bx-diamond',
     },
     {
-        name: 'Hỗ trợ bảo hành',
-        description: 'Đổi, sửa đồ tại tất cả store',
+        name: 'Warranty support',
+        description: 'Exchange, repair at all stores',
         icon: 'bx bx-donate-heart',
     },
 ];

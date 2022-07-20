@@ -14,20 +14,20 @@ import { currentProduct } from '~/redux/selector';
 
 const mainNav = [
     {
-        title: 'Trang chủ',
+        title: 'HOME',
         path: '/',
     },
     {
-        title: 'Sản phẩm',
+        title: 'CLOTHES',
         path: '/catalog',
     },
     {
-        title: 'Phụ kiện',
-        path: '/accessories',
+        title: 'PARTS',
+        path: '/parts',
     },
     {
-        title: 'Liên hệ',
-        path: '/contact',
+        title: 'SALE',
+        path: '/sale',
     },
 ];
 
@@ -40,6 +40,7 @@ const Header = () => {
 
     const [isLogged, setIsLogged] = useState(false);
     const [quantity, setQuantity] = useState(0);
+    const [language, setLanguage] = useState('English');
 
     const [currentUser] = useSelector((store) => store.currentUser);
     const items = useSelector(currentProduct);
@@ -78,6 +79,12 @@ const Header = () => {
         setIsLogged(false);
     };
 
+    const handleLanguageChange = (type) => {
+        if (type === 'Vietnamese' || type === 'Tiếng Việt') {
+            setLanguage('Tiếng Việt');
+        } else setLanguage('English');
+    };
+
     return (
         <div className="header" ref={headerRef}>
             <div className="content">
@@ -105,9 +112,33 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="header_right">
-                    <div className="header_right_item">
-                        <i className="bx bx-search"></i>
-                    </div>
+                    <span>
+                        <HeadlessTippy
+                            interactive
+                            placement="bottom-end"
+                            render={(attrs) => (
+                                <div className="box" tabIndex="-1" {...attrs}>
+                                    {language === 'English' ? (
+                                        <div className="drop_language">
+                                            <span onClick={() => handleLanguageChange('Vietnamese')}>Vietnamese</span>
+                                            <span onClick={() => handleLanguageChange('English')}>English</span>
+                                        </div>
+                                    ) : (
+                                        <div className="drop_language">
+                                            <span onClick={() => handleLanguageChange('Tiếng Anh')}>Tiếng Anh</span>
+                                            <span onClick={() => handleLanguageChange('Tiếng Việt')}>Tiếng Việt</span>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        >
+                            <div className="header_right_item">
+                                <i className="bx bx-globe"></i>
+                                <span className="header_right_item_language">{language}</span>
+                            </div>
+                        </HeadlessTippy>
+                    </span>
+
                     <span>
                         <HeadlessTippy
                             interactive
@@ -139,14 +170,14 @@ const Header = () => {
                                                 className="drop_login_login"
                                                 onClick={() => dispatch(mount('loginForm'))}
                                             >
-                                                Đăng nhập
+                                                Log in
                                             </span>
                                             <p>|</p>
                                             <span
                                                 className="drop_login_logout"
                                                 onClick={() => dispatch(mount('sigInForm'))}
                                             >
-                                                Đăng ký
+                                                Create account
                                             </span>
                                         </div>
                                     </div>
@@ -175,13 +206,13 @@ const Header = () => {
                                                 className="drop_user_item"
                                                 onClick={() => dispatch(mount('errorName'))}
                                             >
-                                                Cài đặt
+                                                Settings
                                             </span>
                                             <Link to="/cart" className="drop_user_item">
-                                                <span>Đơn hàng</span>
+                                                <span>My orders</span>
                                             </Link>
                                             <span className="drop_user_item" onClick={handleLogOut}>
-                                                Đăng xuất
+                                                Logout
                                             </span>
                                         </div>
                                     </div>

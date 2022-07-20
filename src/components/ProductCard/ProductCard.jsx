@@ -37,7 +37,7 @@ const ProductCard = ({ title, price, oldPrice, image01, image02, path, size, aut
                         animation={animation}
                         onClick={handleProductModal}
                     >
-                        Xem chi tiết
+                        Details
                     </Button>
                 </Link>
             </div>

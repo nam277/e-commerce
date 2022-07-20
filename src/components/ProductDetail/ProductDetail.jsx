@@ -122,7 +122,7 @@ const ProductDetail = ({
                     ></div>
                     <div className="product_image_des_toggle">
                         <Button size="small" onClick={() => setMoreDescription(!moreDescription)}>
-                            {moreDescription ? 'Thu gọn' : 'Xem thêm'}
+                            {moreDescription ? 'shorter' : 'More'}
                         </Button>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ const ProductDetail = ({
             <div className="product_options">
                 <h2 className="product_options_heading">{product.title}</h2>
                 <h3 className="product_options_price">{numberFormat(product.price)}</h3>
-                <h4 className="product_options_title">Màu sắc</h4>
+                <h4 className="product_options_title">Colors</h4>
                 <div className="product_options_items">
                     {product.colors.map((color, index) => (
                         <div
@@ -142,7 +142,7 @@ const ProductDetail = ({
                         </div>
                     ))}
                 </div>
-                <h4 className="product_options_title">Kích thước</h4>
+                <h4 className="product_options_title">Sizes</h4>
                 <div className="product_options_items">
                     {product.size.map((size, index) => (
                         <div
@@ -154,7 +154,7 @@ const ProductDetail = ({
                         </div>
                     ))}
                 </div>
-                <h4 className="product_options_title">Số lượng</h4>
+                <h4 className="product_options_title">Items</h4>
                 <div className="product_options_quantity">
                     <div className="product_options_quantity_calculate" onClick={() => updateQuantity('decrease')}>
                         <i className="bx bx-minus"></i>
@@ -165,11 +165,11 @@ const ProductDetail = ({
                     </div>
                 </div>
                 <div className="product_options_button">
-                    <Button size="small" onClick={() => handleToCart()}>
-                        Thêm vào giỏ hàng
+                    <Button isSquared={true} onClick={() => handleToCart()}>
+                        Add to cart
                     </Button>
-                    <Button size="small" onClick={() => handleToCart('goToCart')}>
-                        Mua ngay
+                    <Button isSquared={true} onClick={() => handleToCart('goToCart')}>
+                        buy now
                     </Button>
                 </div>
             </div>
@@ -182,7 +182,7 @@ const ProductDetail = ({
                 ></div>
                 <div className="product_image_des_toggle">
                     <Button size="small" onClick={() => setMoreDescription(!moreDescription)}>
-                        {moreDescription ? 'Thu gọn' : 'Xem thêm'}
+                        {moreDescription ? 'Shorter' : 'More'}
                     </Button>
                 </div>
             </div>

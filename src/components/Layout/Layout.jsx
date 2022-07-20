@@ -7,7 +7,7 @@ import './Layout.scss';
 import Header from '~/components/Header/Header';
 import Footer from '~/components/Footer';
 import ProductDetailModal from '../ProductDetailModal';
-import Alert from '../Alert/Alert';
+import Alert from '../Alert';
 import FormModal from '../InputForm';
 
 const Layout = () => {

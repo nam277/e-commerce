@@ -32,16 +32,9 @@ const HeroSlider = ({ data, control = false, auto = true, timeOut = 3000 }) => {
     return (
         <div className="slider">
             {data.map((item, index) => (
-                <div
-                    key={index}
-                    className={`slider_items ${
-                        index === activeSlider ? 'active' : ''
-                    }`}
-                >
+                <div key={index} className={`slider_items ${index === activeSlider ? 'active' : ''}`}>
                     <div className="slider_items_left">
-                        <div
-                            className={`slider_items_left_title color-${item.color}`}
-                        >
+                        <div className={`slider_items_left_title color-${item.color}`}>
                             <p>{item.title}</p>
                         </div>
                         <div className="slider_items_left_description">
@@ -55,19 +48,13 @@ const HeroSlider = ({ data, control = false, auto = true, timeOut = 3000 }) => {
                                 // size="small"
                                 auto={true}
                             >
-                                Xem chi tiết
+                                Details
                             </Button>
                         </Link>
                     </div>
                     <div className="slider_items_right">
-                        <img
-                            className="slider_items_right_img"
-                            src={item.img}
-                            alt=""
-                        />
-                        <div
-                            className={`slider_items_right_shape bg-color-${item.color}`}
-                        />
+                        <img className="slider_items_right_img" src={item.img} alt="" />
+                        <div className={`slider_items_right_shape bg-color-${item.color}`} />
                     </div>
                 </div>
             ))}

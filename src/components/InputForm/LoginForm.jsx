@@ -23,15 +23,15 @@ const SigInForm = () => {
             id: 1,
             name: 'username',
             type: 'text',
-            placeholder: 'Nhập tên của bạn',
-            label: 'Tên đăng nhập',
+            placeholder: 'Enter username*',
+            label: 'Username',
         },
         {
             id: 2,
             name: 'password',
             type: 'password',
-            placeholder: 'Nhập mật khẩu',
-            label: 'Mật khẩu',
+            placeholder: 'Enter password*',
+            label: 'Password',
         },
     ];
 
@@ -56,17 +56,17 @@ const SigInForm = () => {
 
     return (
         <div className="login_modal_content_form">
-            <h1 className="login_modal_content_form_title">Đăng nhập</h1>
+            <h1 className="login_modal_content_form_title">Log in</h1>
             <form onSubmit={HandleSubmit}>
                 {inputs.map((input) => (
                     <InputItem key={input.id} {...input} onChange={handleOnChange} value={values[inputs.name]} />
                 ))}
                 {inValid === true ? (
-                    <span className="form_inValid_notification">Tên đăng nhập hoặc mật khẩu không hợp lệ</span>
+                    <span className="form_inValid_notification">Invalid username or password </span>
                 ) : null}
                 <div className="form_button_sigIn">
                     <Button type="submit" isSquared={true}>
-                        Đăng nhập
+                        log in
                     </Button>
                 </div>
             </form>

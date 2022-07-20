@@ -14,11 +14,11 @@ const Alert = () => {
             <div className="alert_content">
                 <img src={alertError} alt="Hình ảnh bị lỗi" />
                 <span className="alert_content_notification">
-                    Xin lỗi, chức năng này sẽ xây dựng trong thời gian tới
+                    Sorry, this feature is going to build in the near future
                 </span>
                 <div className="alert_content_close">
                     <Button isSquared={true} size="small" onClick={() => dispatch(remove('errorName'))}>
-                        Đóng
+                        close
                     </Button>
                 </div>
             </div>

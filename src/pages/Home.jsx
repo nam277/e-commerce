@@ -34,7 +34,7 @@ const Home = () => {
             {/* Best Seller Section */}
             <Section>
                 <SectionTitle>
-                    Top sản phẩm bán chạy trong tuần của <span>Yolo</span>
+                    Best selling products of the week <span>Yolo</span>
                 </SectionTitle>
                 <SectionContent>
                     <Grid col={4} md={2} sm={1} rowGap={30} colGap={10}>
@@ -57,7 +57,7 @@ const Home = () => {
             {/* New Products Section */}
             <Section>
                 <SectionTitle>
-                    Sản phẩm mới của <span>Yolo</span>
+                    New products of <span>Yolo</span>
                 </SectionTitle>
                 <SectionContent>
                     <Grid col={4} md={3} sm={2} rowGap={30} colGap={10}>
@@ -89,7 +89,7 @@ const Home = () => {
             {/* Popular Products Section */}
             <Section>
                 <SectionTitle>
-                    Các sản phẩm phổ biến của <span>Yolo</span>
+                    The popular products of <span>Yolo</span>
                 </SectionTitle>
                 <SectionContent>
                     <Grid col={5} md={4} sm={2} rowGap={30} colGap={10}>

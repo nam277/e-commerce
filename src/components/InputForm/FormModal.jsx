@@ -4,7 +4,7 @@ import './loginForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '~/redux/modalReducer';
 import LoginForm from './LoginForm';
-import SigInForm from './SigInForm';
+import Register from './Register';
 
 const FormModal = () => {
     const dispatch = useDispatch();
@@ -19,11 +19,11 @@ const FormModal = () => {
     return (
         <div className={`login_modal ${activeSigIn.value || activeLogIn.value ? 'active' : ''}`}>
             <div className="login_modal_content">
-                {activeSigIn.value ? <SigInForm /> : null}
+                {activeSigIn.value ? <Register /> : null}
                 {activeLogIn.value ? <LoginForm /> : null}
                 <div className="login_modal_content_close">
                     <Button isSquared={true} size="small" onClick={() => closeForm()}>
-                        Đóng
+                        Close
                     </Button>
                 </div>
             </div>

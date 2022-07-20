@@ -24,7 +24,7 @@ const Product = () => {
                 <ProductDetail product={product} />
             </Section>
             <Section>
-                <SectionTitle>sản phẩm tương tự</SectionTitle>
+                <SectionTitle>Similar products</SectionTitle>
                 <SectionContent>
                     <Grid col={4} md={2} sm={1} rowGap={30} colGap={10}>
                         {getProducts(8).map((product, index) => (

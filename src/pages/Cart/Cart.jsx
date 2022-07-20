@@ -31,16 +31,16 @@ const Cart = () => {
             <div className="cart_order">
                 <div className="cart_order_content">
                     <span className="cart_order_content_title">
-                        <p>Tổng số sản phẩm:</p>
-                        <h3>{`${totalProducts} sản phẩm`}</h3>
+                        <p>Total products:</p>
+                        <h3>{`${totalProducts} products`}</h3>
                     </span>
                     <span className="cart_order_content_money">
-                        <p>Tổng số tiền:</p>
+                        <p>Total amount:</p>
                         <h2>{numberFormat(totalPrice)}đ</h2>
                     </span>
-                    <Button isSquared={true}>Đặt hàng</Button>
+                    <Button isSquared={true}>check out</Button>
                     <Link to="/catalog">
-                        <Button isSquared={true}>TIếp tục mua hàng</Button>
+                        <Button isSquared={true}>keep buying</Button>
                     </Link>
                 </div>
             </div>

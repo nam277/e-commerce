@@ -8,43 +8,31 @@ import logo from '~/assets/images/Logo-2.png';
 
 const footerAboutLinks = [
     {
-        display: 'Giới thiệu',
+        display: 'Our Store',
         path: '/about',
     },
     {
-        display: 'Liên hệ',
-        path: '/contact',
+        display: 'Flat sale',
+        path: '/sale',
     },
     {
-        display: 'Tuyển dụng',
-        path: '/contact',
-    },
-    {
-        display: 'Flat Sale',
+        display: 'Brand Story',
         path: '/about',
-    },
-    {
-        display: 'Hệ thống cửa hàng',
-        path: '/contact',
     },
 ];
 
 const footerCustomerLinks = [
     {
-        display: 'Chính sách đổi trả',
-        path: '/about',
+        display: 'Return policy',
+        path: '/policy',
     },
     {
-        display: 'Chính sách bảo hành',
-        path: '/about',
+        display: 'Warranty policy',
+        path: '/policy',
     },
     {
-        display: 'Chính sách hoàn tiền',
-        path: '/about',
-    },
-    {
-        display: 'Tư vấn khách hàng',
-        path: '/contact',
+        display: 'Delivery policy',
+        path: '/policy',
     },
 ];
 
@@ -54,46 +42,31 @@ const Footer = () => {
             <div className="container">
                 <Grid col={4} md={2} sm={1} rowGap={20}>
                     <div className="footer_title">
-                        <h3 className="footer_title_heading">
-                            Tổng đài hỗ trợ
-                        </h3>
+                        <h3 className="footer_title_heading">Call center</h3>
                         <div className="footer_title_items">
                             <div className="footer_title_items_item">
-                                Liên hệ đặt hàng <span>012345679</span>
+                                Order <span>012345679 (8:30 - 20:30)</span>
                             </div>
                             <div className="footer_title_items_item">
-                                Thắc mắc đơn hàng <span>012345679</span>
-                            </div>
-                            <div className="footer_title_items_item">
-                                Góp ý, khiếu nại <span>012345679</span>
+                                Hotline <span>089788258 (7:30 - 21:30)</span>
                             </div>
                         </div>
                     </div>
                     <div className="footer_title">
-                        <h3 className="footer_title_heading">Về Yolo</h3>
+                        <h3 className="footer_title_heading">About Us</h3>
                         <div className="footer_title_items">
                             {footerAboutLinks.map((item, index) => (
-                                <Link
-                                    key={index}
-                                    to={item.path}
-                                    className="footer_title_items_item"
-                                >
+                                <Link key={index} to={item.path} className="footer_title_items_item">
                                     {item.display}
                                 </Link>
                             ))}
                         </div>
                     </div>
                     <div className="footer_title">
-                        <h3 className="footer_title_heading">
-                            Chăm sóc khách hàng
-                        </h3>
+                        <h3 className="footer_title_heading">Customer service</h3>
                         <div className="footer_title_items">
                             {footerCustomerLinks.map((item, index) => (
-                                <Link
-                                    key={index}
-                                    to={item.path}
-                                    className="footer_title_items_item"
-                                >
+                                <Link key={index} to={item.path} className="footer_title_items_item">
                                     {item.display}
                                 </Link>
                             ))}
@@ -104,10 +77,9 @@ const Footer = () => {
                             <img src={logo} alt="" />
                         </Link>
                         <span className="footer_about_span">
-                            Hướng đến mục tiêu mang lại niềm vui ăn mặc mới mỗi
-                            ngày cho hàng triệu người tiêu dùng Việt. Hãy cùng
-                            Yolo hướng đến một cuộc sống năng động, tích cực
-                            hơn.
+                            Yolo is a startup fashion company. "The customer is at the heart of our unique business
+                            model, which includes design, production, distribution and sales through our extensive
+                            retail network".<p>-- Quote from Zara team --</p>
                         </span>
                     </div>
                 </Grid>

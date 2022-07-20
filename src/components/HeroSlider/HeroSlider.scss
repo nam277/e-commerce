@@ -5,6 +5,8 @@
     height: 95vh;
     max-height: 960px;
     position: relative;
+    // background-image: linear-gradient(to left, transparent 15%, black);
+    // background-position: center;
 
     @include tablet {
         margin-top: 0;

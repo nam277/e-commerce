@@ -1,7 +1,14 @@
 import React from 'react';
+import Title from '../components/Title';
+import { FaultPage } from '~/components/Alert';
 
 const About = () => {
-    return <div>About</div>;
+    return (
+        <>
+            <Title title="contact" />
+            <FaultPage />
+        </>
+    );
 };
 
 export default About;

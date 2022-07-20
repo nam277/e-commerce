@@ -1,5 +1,11 @@
+@import '../../sass/index.scss';
+
 .footer {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    background-image: url(../../assets/images/image_footer.jpg);
+    background-size: cover;
+    background-position-y: center;
 
     &_title {
         &_heading {
@@ -23,6 +29,7 @@
     }
 
     &_about {
+        text-align: justify;
         &_logo {
             display: block;
             height: 60px;
@@ -35,6 +42,9 @@
         &_span {
             font-size: 1.1rem;
             line-height: 24px;
+            p {
+                color: red;
+            }
         }
     }
 }
