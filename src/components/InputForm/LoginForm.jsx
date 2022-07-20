@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logInUser } from '~/redux/currentUserReducer';
 import { remove } from '~/redux/modalReducer';
@@ -29,7 +29,7 @@ const SigInForm = () => {
         {
             id: 2,
             name: 'password',
-            type: 'text',
+            type: 'password',
             placeholder: 'Nhập mật khẩu',
             label: 'Mật khẩu',
         },
