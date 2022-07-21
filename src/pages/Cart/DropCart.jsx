@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ const DropCart = ({ isShow, setShow }) => {
     const productState = useSelector(currentProduct);
 
     const handleHideCartTippy = () => {
-        if (document.documentElement.clientWidth <= 1024) {
+        if (document.documentElement.clientWidth || window.innerWidth || screen.width <= 1024) {
             setShow(!isShow);
         }
     };
