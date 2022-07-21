@@ -41,6 +41,8 @@ const Header = () => {
     const [isLogged, setIsLogged] = useState(false);
     const [quantity, setQuantity] = useState(0);
     const [language, setLanguage] = useState('English');
+    const [showCartTippy, setShowCartTippy] = useState(window.innerWidth <= 1024 ? false : true);
+    const [showUserTippy, setShowUserTippy] = useState(window.innerWidth <= 1024 ? false : true);
 
     const [currentUser] = useSelector((store) => store.currentUser);
     const items = useSelector(currentProduct);
@@ -83,6 +85,26 @@ const Header = () => {
         if (type === 'Vietnamese' || type === 'Tiếng Việt') {
             setLanguage('Tiếng Việt');
         } else setLanguage('English');
+    };
+
+    const handleHideCartTippy = (type) => {
+        if (window.innerWidth <= 1024) {
+            if (type === 'onHidden') {
+                setShowCartTippy(false);
+            } else {
+                setShowCartTippy(!showCartTippy);
+            }
+        }
+    };
+
+    const handleHideUserTippy = (type) => {
+        if (window.innerWidth <= 1024) {
+            if (type === 'onHidden') {
+                setShowUserTippy(false);
+            } else {
+                setShowUserTippy(!showUserTippy);
+            }
+        }
     };
 
     return (
@@ -143,17 +165,18 @@ const Header = () => {
                         <HeadlessTippy
                             interactive
                             placement="bottom-end"
+                            onHidden={() => handleHideCartTippy('onHidden')}
                             render={(attrs) => (
                                 <div className="box" tabIndex="-1" {...attrs}>
-                                    <DropCart />
+                                    <DropCart isShow={showCartTippy} setShow={setShowCartTippy} />
                                 </div>
                             )}
                         >
-                            <div className="header_right_item">
-                                <Link to="/cart" className="header_right_item_cart">
+                            <div className="header_right_item" onClick={handleHideCartTippy}>
+                                <div className="header_right_item_cart">
                                     <i className="bx bx-cart"></i>
                                     <p>{quantity}</p>
-                                </Link>
+                                </div>
                             </div>
                         </HeadlessTippy>
                     </span>
@@ -193,9 +216,10 @@ const Header = () => {
                             <HeadlessTippy
                                 interactive
                                 placement="bottom-end"
+                                onHidden={() => handleHideUserTippy('onHidden')}
                                 render={(attrs) => (
                                     <div className="box" tabIndex="-1" {...attrs}>
-                                        <div className="drop_user ">
+                                        <div className={`drop_user ${showUserTippy ? '' : 'none'}`}>
                                             <span
                                                 className="drop_user_item"
                                                 onClick={() => dispatch(mount('errorName'))}
@@ -208,7 +232,7 @@ const Header = () => {
                                             >
                                                 Settings
                                             </span>
-                                            <Link to="/cart" className="drop_user_item">
+                                            <Link to="/cart" className="drop_user_item" onClick={handleHideUserTippy}>
                                                 <span>My orders</span>
                                             </Link>
                                             <span className="drop_user_item" onClick={handleLogOut}>
@@ -218,7 +242,7 @@ const Header = () => {
                                     </div>
                                 )}
                             >
-                                <div className="header_right_item ">
+                                <div className="header_right_item " onClick={handleHideUserTippy}>
                                     <div className="icon_logged">
                                         <img src={testUser} alt="User" />
                                     </div>

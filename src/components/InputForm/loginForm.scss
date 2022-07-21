@@ -16,7 +16,6 @@
 
     &.active {
         opacity: 1;
-        // padding-top: 15vh;
         visibility: visible;
     }
 
@@ -52,6 +51,9 @@
                     @include flex(flex-start, center);
                     flex-direction: column;
                     width: 400px;
+                    @include mobile {
+                        width: 80vw;
+                    }
 
                     label {
                         font-size: 1.3rem;

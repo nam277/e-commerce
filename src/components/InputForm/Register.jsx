@@ -42,7 +42,7 @@ const LoginForm = () => {
             id: 3,
             name: 'birthday',
             type: 'date',
-            placeholder: 'Enter ',
+            placeholder: 'Enter your birthday',
             label: 'Birthday',
             errormessage: 'Enter your birthday to get a discount',
             required: true,
@@ -50,7 +50,7 @@ const LoginForm = () => {
         {
             id: 4,
             name: 'password',
-            type: 'text',
+            type: 'password',
             placeholder: 'Enter your password',
             label: 'Password',
             errormessage:

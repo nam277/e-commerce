@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './Cart.scss';
@@ -7,8 +7,11 @@ import numberFormat from '~/utilities/numberFormat';
 import Button from '~/components/Button';
 import CartProduct from './CartProduct';
 import { currentProduct } from '~/redux/selector';
+import { mount } from '~/redux/modalReducer';
 
 const Cart = () => {
+    const dispatch = useDispatch();
+
     const productState = useSelector(currentProduct);
 
     const [products, setProduct] = useState(productState);
@@ -38,7 +41,9 @@ const Cart = () => {
                         <p>Total amount:</p>
                         <h2>{numberFormat(totalPrice)}đ</h2>
                     </span>
-                    <Button isSquared={true}>check out</Button>
+                    <Button isSquared={true} onClick={() => dispatch(mount('errorName'))}>
+                        check out
+                    </Button>
                     <Link to="/catalog">
                         <Button isSquared={true}>keep buying</Button>
                     </Link>

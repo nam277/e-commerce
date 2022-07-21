@@ -7,11 +7,16 @@ import noProduct from '~/assets/images/No_product.png';
 import numberFormat from '~/utilities/numberFormat';
 import { currentProduct } from '~/redux/selector';
 
-const DropCart = () => {
+const DropCart = ({ isShow, setShow }) => {
     const productState = useSelector(currentProduct);
 
+    const handleHideCartTippy = () => {
+        if (window.innerWidth <= 1024) {
+            setShow(!isShow);
+        }
+    };
     return (
-        <div className="dropCart">
+        <div className={`dropCart ${isShow ? '' : 'none'}`}>
             {productState.length === 0 ? (
                 <div className="dropCart_empty">
                     <img src={noProduct} alt="Your cart is currently empty" />
@@ -36,7 +41,7 @@ const DropCart = () => {
                         ))}
                     </div>
                     <div className="dropCart_button">
-                        <Link to="/Cart">
+                        <Link to="/Cart" onClick={handleHideCartTippy}>
                             <Button isSquared={true} size="small">
                                 Move to cart
                             </Button>

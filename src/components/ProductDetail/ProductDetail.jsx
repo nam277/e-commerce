@@ -64,11 +64,11 @@ const ProductDetail = ({
 
     const isChecked = () => {
         if (currentColor === undefined) {
-            alert('Vui lòng chọn màu sản phẩm');
+            alert('Please choose a color');
             return false;
         }
         if (currentSize === undefined) {
-            alert('Vui lòng chọn kích thước sản phẩm');
+            alert('Please choose a size');
             return false;
         }
         return true;
@@ -97,7 +97,7 @@ const ProductDetail = ({
                     dispatch(close());
                 }
             }
-        } else alert('pls login first');
+        } else alert('Please login first');
     };
 
     return (
