@@ -17,9 +17,9 @@ input:after {
     -moz-user-select: initial;
     -ms-user-select: initial;
     user-select: initial;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    -webkit-appearance: inherit;
+    -moz-appearance: inherit;
+    appearance: inherit;
 }
 
 html {
