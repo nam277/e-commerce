@@ -35,7 +35,7 @@ const Header = () => {
     const { pathname } = useLocation();
     const dispatch = useDispatch();
     // eslint-disable-next-line no-restricted-globals
-    const checkDevicesWidth = document.documentElement.clientWidth || window.innerWidth || screen.width;
+    const checkDevicesWidth = window.screen.width || document.documentElement.clientWidth || window.innerWidth;
 
     const headerRef = useRef(null);
     const headerLeftRef = useRef(null);

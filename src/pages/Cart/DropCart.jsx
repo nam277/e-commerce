@@ -10,7 +10,7 @@ import { currentProduct } from '~/redux/selector';
 
 const DropCart = ({ isShow, setShow }) => {
     const productState = useSelector(currentProduct);
-    const checkDevicesWidth = document.documentElement.clientWidth || window.innerWidth || screen.width;
+    const checkDevicesWidth = window.screen.width || document.documentElement.clientWidth || window.innerWidth;
 
     const handleHideCartTippy = () => {
         if (checkDevicesWidth <= 1024) {

@@ -77,6 +77,14 @@
                         }
                     }
 
+                    input[type='date']::-webkit-input-placeholder {
+                        font-size: 1.2rem;
+                    }
+
+                    input[type='date']::-webkit-input {
+                        width: 100%;
+                    }
+
                     input,
                     textarea {
                         font-size: 1.3rem;
