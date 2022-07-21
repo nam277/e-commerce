@@ -10,14 +10,16 @@ import { currentProduct } from '~/redux/selector';
 
 const DropCart = ({ isShow, setShow }) => {
     const productState = useSelector(currentProduct);
+    const checkDevicesWidth = document.documentElement.clientWidth || window.innerWidth || screen.width;
 
     const handleHideCartTippy = () => {
-        if (document.documentElement.clientWidth || window.innerWidth || screen.width <= 1024) {
-            setShow(!isShow);
+        if (checkDevicesWidth <= 1024) {
+            setShow(false);
         }
     };
+
     return (
-        <div className={`dropCart ${isShow ? '' : 'none'}`}>
+        <div className={`dropCart ${checkDevicesWidth > 1024 ? '' : isShow ? '' : 'none'}`}>
             {productState.length === 0 ? (
                 <div className="dropCart_empty">
                     <img src={noProduct} alt="Your cart is currently empty" />

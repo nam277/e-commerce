@@ -221,7 +221,11 @@ const Header = () => {
                                 onHidden={() => handleHideUserTippy('onHidden')}
                                 render={(attrs) => (
                                     <div className="box" tabIndex="-1" {...attrs}>
-                                        <div className={`drop_user ${showUserTippy ? '' : 'none'}`}>
+                                        <div
+                                            className={`drop_user ${
+                                                checkDevicesWidth > 1024 ? '' : showUserTippy ? '' : 'none'
+                                            }`}
+                                        >
                                             <span
                                                 className="drop_user_item"
                                                 onClick={() => dispatch(mount('errorName'))}
