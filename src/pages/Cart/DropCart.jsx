@@ -11,7 +11,7 @@ const DropCart = ({ isShow, setShow }) => {
     const productState = useSelector(currentProduct);
 
     const handleHideCartTippy = () => {
-        if (window.innerWidth <= 1024) {
+        if (document.documentElement.clientWidth <= 1024) {
             setShow(!isShow);
         }
     };

@@ -41,8 +41,8 @@ const Header = () => {
     const [isLogged, setIsLogged] = useState(false);
     const [quantity, setQuantity] = useState(0);
     const [language, setLanguage] = useState('English');
-    const [showCartTippy, setShowCartTippy] = useState(window.innerWidth <= 1024 ? false : true);
-    const [showUserTippy, setShowUserTippy] = useState(window.innerWidth <= 1024 ? false : true);
+    const [showCartTippy, setShowCartTippy] = useState(document.documentElement.clientWidth <= 1024 ? false : true);
+    const [showUserTippy, setShowUserTippy] = useState(document.documentElement.clientWidth <= 1024 ? false : true);
 
     const [currentUser] = useSelector((store) => store.currentUser);
     const items = useSelector(currentProduct);
@@ -88,7 +88,7 @@ const Header = () => {
     };
 
     const handleHideCartTippy = (type) => {
-        if (window.innerWidth <= 1024) {
+        if (document.documentElement.clientWidth <= 1024) {
             if (type === 'onHidden') {
                 setShowCartTippy(false);
             } else {
@@ -98,7 +98,7 @@ const Header = () => {
     };
 
     const handleHideUserTippy = (type) => {
-        if (window.innerWidth <= 1024) {
+        if (document.documentElement.clientWidth <= 1024) {
             if (type === 'onHidden') {
                 setShowUserTippy(false);
             } else {
