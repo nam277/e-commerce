@@ -51,4 +51,45 @@
     &.active &_content {
         transform: translateY(0);
     }
+
+    &.active &_content > .product {
+        @include large {
+            margin-right: -10px;
+            overflow-y: scroll;
+            height: 85vh;
+        }
+    }
+
+    &.active &_content > .product > .product_image > .product_image_des {
+        @include large {
+            height: 45vh;
+        }
+    }
+    &.active &_content > .product > .product_image > .product_image_des.more {
+        @include large {
+            height: max-content;
+        }
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        background: #f1f1f1;
+        border-radius: 5s;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: $main-color;
+        border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
 }
