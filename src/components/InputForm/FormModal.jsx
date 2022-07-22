@@ -8,18 +8,18 @@ import Register from './Register';
 
 const FormModal = () => {
     const dispatch = useDispatch();
-    const activeSigIn = useSelector((store) => store.modalReducer.find((item) => item.name === 'sigInForm'));
+    const activeRegister = useSelector((store) => store.modalReducer.find((item) => item.name === 'registerForm'));
     const activeLogIn = useSelector((store) => store.modalReducer.find((item) => item.name === 'loginForm'));
 
     const closeForm = () => {
-        dispatch(remove('sigInForm'));
+        dispatch(remove('registerForm'));
         dispatch(remove('loginForm'));
     };
 
     return (
-        <div className={`login_modal ${activeSigIn.value || activeLogIn.value ? 'active' : ''}`}>
+        <div className={`login_modal ${activeLogIn.value || activeRegister.value ? 'active' : ''}`}>
             <div className="login_modal_content">
-                {activeSigIn.value ? <Register /> : null}
+                {activeRegister.value ? <Register /> : null}
                 {activeLogIn.value ? <LoginForm /> : null}
                 <div className="login_modal_content_close">
                     <Button isSquared={true} size="small" onClick={() => closeForm()}>

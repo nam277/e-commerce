@@ -200,7 +200,7 @@ const Header = () => {
                                             <p>|</p>
                                             <span
                                                 className="drop_login_logout"
-                                                onClick={() => dispatch(mount('sigInForm'))}
+                                                onClick={() => dispatch(mount('registerForm'))}
                                             >
                                                 Create account
                                             </span>

@@ -46,7 +46,7 @@
         }
 
         @include mobile {
-            padding: 0 10px;
+            padding: 0 5px;
         }
     }
 
@@ -173,8 +173,15 @@
             @include flex(center, flex-end);
 
             @include mobile {
-                padding: 0 10px 0 10px;
+                padding: 0 7px 0 7px;
                 margin-left: 0px;
+                position: relative;
+            }
+
+            i {
+                @include mobile {
+                    font-size: 1.7rem;
+                }
             }
 
             &_language {
@@ -188,10 +195,15 @@
             &_cart {
                 position: relative;
 
+                @include mobile {
+                    position: none;
+                    @include flex(center, center);
+                }
+
                 p {
-                    $height-width-line: 28px;
+                    $height-width-line: 24px;
                     position: absolute;
-                    top: -14px;
+                    top: -5px;
                     right: -10px;
                     text-align: center;
                     font-size: 1.1rem;
@@ -205,8 +217,13 @@
                     border: 1px solid $text-white-color;
                     @include flex(center, center);
 
+                    @include tablet {
+                        top: -2px;
+                    }
+
                     @include mobile {
-                        top: -7px;
+                        top: -5px;
+                        right: -8px;
                         font-size: 1rem;
                         $height-width-line: 20px;
                         height: $height-width-line;

@@ -5,7 +5,11 @@ const modalReducer = createSlice({
     initialState: [
         { name: 'errorName', value: false },
         { name: 'loginForm', value: false },
-        { name: 'sigInForm', value: false },
+        { name: 'registerForm', value: false },
+        { name: 'chooseColor', value: false },
+        { name: 'chooseSize', value: false },
+        { name: 'loginFirst', value: false },
+        { name: 'successfullyRegister', value: false },
     ],
     reducers: {
         mount: (state, action) => {

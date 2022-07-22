@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { remove } from '~/redux/modalReducer';
+import { mount, remove } from '~/redux/modalReducer';
 import { addUser } from '~/redux/usersReducer';
 import Button from '../Button';
 import InputItem from './InputItem';
@@ -8,6 +8,7 @@ import './loginForm.scss';
 
 const LoginForm = () => {
     const users = useSelector((store) => store.users);
+    const dispatch = useDispatch();
 
     const [values, setValues] = useState({
         username: '',
@@ -79,7 +80,8 @@ const LoginForm = () => {
         );
         if (!existedUser) {
             dispatch(addUser(values));
-            dispatch(remove('sigInForm'));
+            dispatch(remove('registerForm'));
+            dispatch(mount('successfullyRegister'));
         } else {
             setExistedMessage(true);
         }
@@ -89,7 +91,10 @@ const LoginForm = () => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const dispatch = useDispatch();
+    const handleToggleForm = () => {
+        dispatch(mount('loginForm'));
+        dispatch(remove('registerForm'));
+    };
     return (
         <div className="login_modal_content_form">
             <h1 className="login_modal_content_form_title">Create Account</h1>
@@ -99,6 +104,9 @@ const LoginForm = () => {
                     <InputItem key={input.id} {...input} onChange={handleOnChange} value={values[inputs.name]} />
                 ))}
                 <div className="form_button">
+                    <span>
+                        You already have an account.<p onClick={handleToggleForm}>Login here</p>
+                    </span>
                     <Button type="submit" isSquared={true}>
                         register
                     </Button>

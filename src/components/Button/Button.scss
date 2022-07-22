@@ -44,6 +44,9 @@
     &_medium &_icon {
         font-size: 2rem;
     }
+    &_medium &_text {
+        padding: 10px 20px;
+    }
 
     &_small {
         font-size: 0.9rem;
@@ -52,7 +55,7 @@
         font-size: 1.8rem;
     }
 
-    &_small > .btn_text {
+    &_small &_text {
         padding: 10px 20px;
     }
 

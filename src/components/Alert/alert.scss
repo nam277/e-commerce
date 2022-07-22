@@ -75,10 +75,6 @@
 
 .faultPage {
     padding-top: 5vh;
-    &_back {
-        img {
-        }
-    }
 
     &_error {
         @include flex(center, center);
@@ -97,5 +93,184 @@
         img {
             box-shadow: 0 0 14px 6px rgba($color: #000000, $alpha: 0.2);
         }
+    }
+}
+
+.alert-choose {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 0;
+    z-index: 102;
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    overflow: hidden;
+    @include flex(flex-start, center);
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+        opacity: 1;
+        padding-top: 40vh;
+        visibility: visible;
+
+        // @include mobile {
+        //     padding-left: 7px;
+        //     padding-right: 7px;
+        // }
+    }
+
+    &_content {
+        @include flex(center, center);
+        flex-direction: column;
+        padding: 50px 40px 10px 40px;
+        width: max-content;
+        background-color: $main-background;
+        position: relative;
+        transform: translateX(-100%);
+        transition: transform 0.2s linear;
+
+        &_notification {
+            font-size: 2rem;
+            color: #fe7d73;
+            font-weight: bold;
+            @include tablet {
+                font-size: 1.5rem;
+            }
+        }
+
+        &_image {
+            width: 160px;
+            cursor: pointer;
+        }
+
+        &_close {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    &.active &_content {
+        transform: translateX(0);
+    }
+}
+
+.alert-success {
+    $time-show-hide: 1s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 40vh;
+    z-index: 102;
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    overflow: hidden;
+    @include flex(flex-start, center);
+    opacity: 0;
+    visibility: hidden;
+
+    @include tablet {
+        padding-top: 30vh;
+    }
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        animation: layoutShow $time-show-hide linear;
+    }
+
+    &.remove {
+        animation: layoutHide $time-show-hide linear;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &_content {
+        position: relative;
+        padding: 10px 20px 2px 20px;
+        width: max-content;
+        @include flex(center, center);
+        flex-direction: column;
+        border-radius: 35px;
+        background-color: $main-background;
+        transform: translateX(-100vw);
+
+        &_notification {
+            font-size: 2rem;
+            color: rgb(40, 167, 69);
+            font-weight: bold;
+            letter-spacing: 2px;
+            word-spacing: 2px;
+            @include tablet {
+                font-size: 1.5rem;
+            }
+            @include mobile {
+                font-size: 1.2rem;
+            }
+        }
+
+        &_icon {
+            color: $main-color;
+            font-size: 4rem;
+            @include tablet {
+                font-size: 3rem;
+            }
+            @include mobile {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    &.active &_content {
+        animation: slideIn $time-show-hide linear;
+        transform: translateX(0);
+    }
+
+    &.remove &_content {
+        animation: slideOut $time-show-hide linear;
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100vw);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes layoutShow {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes layoutHide {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
     }
 }

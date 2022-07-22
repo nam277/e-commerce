@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logInUser } from '~/redux/currentUserReducer';
-import { remove } from '~/redux/modalReducer';
+import { mount, remove } from '~/redux/modalReducer';
 import Button from '../Button';
 import InputItem from './InputItem';
 import './loginForm.scss';
 
-const SigInForm = () => {
+const LoginForm = () => {
     const users = useSelector((store) => store.users);
 
     const dispatch = useDispatch();
@@ -54,6 +54,11 @@ const SigInForm = () => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    const handleToggleForm = () => {
+        dispatch(remove('loginForm'));
+        dispatch(mount('registerForm'));
+    };
+
     return (
         <div className="login_modal_content_form">
             <h1 className="login_modal_content_form_title">Log in</h1>
@@ -64,7 +69,10 @@ const SigInForm = () => {
                 {inValid === true ? (
                     <span className="form_inValid_notification">Invalid username or password </span>
                 ) : null}
-                <div className="form_button_sigIn">
+                <div className="form_button">
+                    <span>
+                        You haven't had an account yet.<p onClick={handleToggleForm}>Register here</p>
+                    </span>
                     <Button type="submit" isSquared={true}>
                         log in
                     </Button>
@@ -74,4 +82,4 @@ const SigInForm = () => {
     );
 };
 
-export default SigInForm;
+export default LoginForm;

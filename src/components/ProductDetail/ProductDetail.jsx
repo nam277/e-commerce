@@ -8,6 +8,7 @@ import './ProductDetail.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '~/redux/cartReducer';
 import { close } from '~/redux/productDetailReducer';
+import { mount } from '~/redux/modalReducer';
 
 const ProductDetail = ({
     product = {
@@ -64,11 +65,11 @@ const ProductDetail = ({
 
     const isChecked = () => {
         if (currentColor === undefined) {
-            alert('Please choose a color');
+            dispatch(mount('chooseColor'));
             return false;
         }
         if (currentSize === undefined) {
-            alert('Please choose a size');
+            dispatch(mount('chooseSize'));
             return false;
         }
         return true;
@@ -97,7 +98,7 @@ const ProductDetail = ({
                     dispatch(close());
                 }
             }
-        } else alert('Please login first');
+        } else dispatch(mount('loginFirst'));
     };
 
     return (
@@ -165,10 +166,10 @@ const ProductDetail = ({
                     </div>
                 </div>
                 <div className="product_options_button">
-                    <Button isSquared={true} onClick={() => handleToCart()}>
+                    <Button isSquared={true} size="medium" onClick={() => handleToCart()}>
                         Add to cart
                     </Button>
-                    <Button isSquared={true} onClick={() => handleToCart('goToCart')}>
+                    <Button isSquared={true} size="medium" onClick={() => handleToCart('goToCart')}>
                         buy now
                     </Button>
                 </div>

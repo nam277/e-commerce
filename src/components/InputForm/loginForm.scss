@@ -108,12 +108,18 @@
                 }
 
                 .form_button {
-                    @include flex(center, flex-end);
-                }
-
-                .form_button_sigIn {
                     margin-top: 15px;
-                    @include flex(center, flex-end);
+                    @include flex(center, space-between);
+                    span {
+                        font-size: 1.1rem;
+                        flex: 1;
+                        p {
+                            color: $main-color;
+                            font-size: 1.2rem;
+                            cursor: pointer;
+                            width: fit-content;
+                        }
+                    }
                 }
             }
         }

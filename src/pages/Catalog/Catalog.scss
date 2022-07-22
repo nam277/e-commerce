@@ -2,7 +2,6 @@
 
 .catalog {
     @include flex(flex-start, flex-start);
-    padding-top: 50px;
 
     @include tablet {
         flex-direction: column;

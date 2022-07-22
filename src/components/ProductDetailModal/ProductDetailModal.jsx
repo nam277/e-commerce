@@ -9,8 +9,7 @@ import ProductDetail from '../ProductDetail/ProductDetail';
 import './ProductDetailModal.scss';
 import { close } from '~/redux/productDetailReducer';
 
-const ProductDetailModal = (props) => {
-    // const product = getProductByPath('quan-jean-phong-cach-18');
+const ProductDetailModal = () => {
     const dispatch = useDispatch();
     const [product, setProduct] = useState(undefined);
     const productPath = useSelector((store) => store.productDetail.value);
@@ -25,7 +24,7 @@ const ProductDetailModal = (props) => {
                 <ProductDetail product={product} />
                 <div className="product-modal_content_close">
                     <Button size="small" isSquared={true} onClick={() => dispatch(close())}>
-                        Đóng
+                        Close
                     </Button>
                 </div>
             </div>

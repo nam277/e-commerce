@@ -23,7 +23,7 @@ const DropCart = ({ isShow, setShow }) => {
             {productState.length === 0 ? (
                 <div className="dropCart_empty">
                     <img src={noProduct} alt="Your cart is currently empty" />
-                    <span className="dropCart_empty_title">No products yet</span>
+                    <span className="dropCart_empty_title">No product yet</span>
                 </div>
             ) : (
                 <>

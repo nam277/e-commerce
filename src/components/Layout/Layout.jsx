@@ -7,7 +7,7 @@ import './Layout.scss';
 import Header from '~/components/Header/Header';
 import Footer from '~/components/Footer';
 import ProductDetailModal from '../ProductDetailModal';
-import Alert from '../Alert';
+import Alert, { AlertChoose, AlertSuccess } from '../Alert';
 import FormModal from '../InputForm';
 
 const Layout = () => {
@@ -49,6 +49,10 @@ const Layout = () => {
             <Footer />
             <ProductDetailModal />
             <Alert />
+            <AlertChoose type="loginFirst" />
+            <AlertChoose type="chooseColor" />
+            <AlertChoose type="chooseSize" />
+            <AlertSuccess />
             <FormModal />
         </BrowserRouter>
     );
