@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import './loginForm.scss';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { mount, remove } from '~/redux/modalReducer';
 import { addUser } from '~/redux/usersReducer';
+
 import Button from '../Button';
 import InputItem from './InputItem';
-import './loginForm.scss';
 
 const LoginForm = () => {
     const users = useSelector((store) => store.users);

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './loginForm.scss';
 
 const LoginItem = ({ label, errormessage, id, ...inputProps }) => {

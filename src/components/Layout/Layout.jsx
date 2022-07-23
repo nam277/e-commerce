@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './Layout.scss';
 
 import { publicRoutes } from '~/routes';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import './Layout.scss';
 import Header from '~/components/Header/Header';
 import Footer from '~/components/Footer';
 import ProductDetailModal from '../ProductDetailModal';

@@ -9,8 +9,6 @@
     user-select: none;
 }
 
-/* width */
-
 input,
 input:before,
 input:after {
@@ -30,20 +28,17 @@ html {
         width: 10px;
     }
 
-    /* Track */
     ::-webkit-scrollbar-track {
         box-shadow: inset 0 0 5px grey;
         background: #f1f1f1;
         border-radius: 5s;
     }
 
-    /* Handle */
     ::-webkit-scrollbar-thumb {
         background: rgba(66, 103, 194, 0.6);
         border-radius: 5px;
     }
 
-    /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: rgba(66, 103, 194, 0.9);
     }

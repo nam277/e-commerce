@@ -79,17 +79,6 @@ const cartReducer = createSlice({
                 }
             }
             localStorage.setItem('productCart', JSON.stringify(state));
-            // const existedProduct = state.find(
-            //     (product) =>
-            //         product.path === action.payload.path &&
-            //         product.color === action.payload.color &&
-            //         product.size === action.payload.size,
-            // );
-            // const existedProductIndex = state.findIndex((product) => product === existedProduct);
-            // if (existedProduct) {
-            //     state.splice(existedProductIndex, 1);
-            // }
-            // localStorage.setItem('productCart', JSON.stringify(state.sort((a, b) => a.price - b.price)));
         },
     },
 });

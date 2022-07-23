@@ -1,16 +1,16 @@
-import React, { useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-
+import React, { useEffect, useRef, useState } from 'react';
 import './Header.scss';
+import { Link, useLocation } from 'react-router-dom';
+import HeadlessTippy from '@tippyjs/react/headless';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { logOutUser } from '~/redux/currentUserReducer';
+import { mount } from '~/redux/modalReducer';
+import { currentProduct } from '~/redux/selector';
+
+import { DropCart } from '~/pages/Cart';
 import logo from '~/assets/images/Logo-2.png';
 import testUser from '~/assets/images/test_user.jpg';
-import { useState } from 'react';
-import { DropCart } from '~/pages/Cart';
-import HeadlessTippy from '@tippyjs/react/headless';
-import { mount } from '~/redux/modalReducer';
-import { logOutUser } from '~/redux/currentUserReducer';
-import { currentProduct } from '~/redux/selector';
 
 const mainNav = [
     {

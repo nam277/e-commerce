@@ -1,8 +1,9 @@
 import React from 'react';
+import './alert.scss';
 import { Link } from 'react-router-dom';
+
 import returnHome from '~/assets/images/return-home.png';
 import alertError from '~/assets/images/alert_error.jpg';
-import './alert.scss';
 
 const FaultPage = ({ image = alertError }) => {
     return (

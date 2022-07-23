@@ -12,7 +12,6 @@
     box-shadow: $box-shadow;
     background-image: url(../../assets/images/image_header.jpg);
     background-size: cover;
-    // background-position-y: center;
 
     @include tablet {
         height: $header-tablet-height;

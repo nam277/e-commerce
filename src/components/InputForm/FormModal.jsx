@@ -1,8 +1,9 @@
 import React from 'react';
-import Button from '../Button';
 import './loginForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '~/redux/modalReducer';
+
+import Button from '../Button';
 import LoginForm from './LoginForm';
 import Register from './Register';
 

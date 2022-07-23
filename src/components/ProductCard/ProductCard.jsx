@@ -1,12 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import './ProductCard.scss';
-import Button from '../Button';
+
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import numberFormat from '~/utilities';
 import { useDispatch } from 'react-redux';
 import { open } from '~/redux/productDetailReducer';
+
+import Button from '../Button';
+import numberFormat from '~/utilities';
 
 const ProductCard = ({ title, price, oldPrice, image01, image02, path, size, auto, animation = true }) => {
     const dispatch = useDispatch();

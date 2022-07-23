@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './alert.scss';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { remove } from '~/redux/modalReducer';
-import { useState } from 'react';
 
 const AlertSuccess = () => {
     const dispatch = useDispatch();

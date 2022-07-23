@@ -1,9 +1,11 @@
 import React from 'react';
-import Button from '../Button';
 import './alert.scss';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '~/redux/modalReducer';
 import alertError from '~/assets/images/alert_error.jpg';
+
+import Button from '../Button';
 
 const Alert = () => {
     const dispatch = useDispatch();
